@@ -1,0 +1,32 @@
+name: kbignum
+options:
+  bundleIdPrefix: com.papacekb
+targets:
+  kbignum:
+    type: library.static
+    platform: iOS
+    deploymentTarget: "9.0"
+    sources:
+      - path: src
+        headerVisibility: private
+    settings:
+      configs:
+        debug:
+          CONFIGURATION_BUILD_DIR: build
+          J2OBJC_HOME: $PROJECT_DIR/../j2objc
+          HEADER_SEARCH_PATHS: $J2OBJC_HOME/include $SOURCE_ROOT/src
+          LIBRARY_SEARCH_PATHS: $J2OBJC_HOME/lib
+          OTHER_LDFLAGS: -ObjC -liconv -lz -framework Security
+          CLANG_ENABLE_OBJC_ARC: No
+          ENABLE_BITCODE: Yes
+        release:
+          CONFIGURATION_BUILD_DIR: build
+          J2OBJC_HOME: $PROJECT_DIR/../j2objc
+          HEADER_SEARCH_PATHS: $J2OBJC_HOME/include $SOURCE_ROOT/src
+          LIBRARY_SEARCH_PATHS: $J2OBJC_HOME/lib
+          OTHER_LDFLAGS: -ObjC -liconv -lz -framework Security
+          CLANG_ENABLE_OBJC_ARC: No
+          ENABLE_BITCODE: Yes
+    dependencies:
+      - framework: $J2OBJC_HOME/frameworks/JRE.xcframework
+
