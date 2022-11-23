@@ -1,39 +1,39 @@
 package com.papacekb.kbignum;
 
-public class BigDecimal {
+public class JBigDecimal {
 
     private final java.math.BigDecimal delegate;
 
-    private BigDecimal(java.math.BigDecimal delegate) {
+    private JBigDecimal(java.math.BigDecimal delegate) {
         this.delegate = delegate;
     }
 
-    public BigDecimal(String value) {
+    public JBigDecimal(String value) {
         this.delegate = new java.math.BigDecimal(value);
     }
 
-    public BigDecimal(double value) {
+    public JBigDecimal(double value) {
         this.delegate = java.math.BigDecimal.valueOf(value);
     }
 
-    public BigDecimal(long value) {
+    public JBigDecimal(long value) {
         this.delegate = java.math.BigDecimal.valueOf(value);
     }
 
-    public BigDecimal add(BigDecimal n) {
-        return new BigDecimal(this.delegate.add(n.delegate));
+    public JBigDecimal add(JBigDecimal n) {
+        return new JBigDecimal(this.delegate.add(n.delegate));
     }
 
-    public BigDecimal subtract(BigDecimal n) {
-        return new BigDecimal(this.delegate.subtract(n.delegate));
+    public JBigDecimal subtract(JBigDecimal n) {
+        return new JBigDecimal(this.delegate.subtract(n.delegate));
     }
 
-    public BigDecimal multiply(BigDecimal n) {
-        return new BigDecimal(this.delegate.multiply(n.delegate));
+    public JBigDecimal multiply(JBigDecimal n) {
+        return new JBigDecimal(this.delegate.multiply(n.delegate));
     }
 
-    public BigDecimal divide(BigDecimal n) {
-        return new BigDecimal(this.delegate.divide(n.delegate));
+    public JBigDecimal divide(JBigDecimal n) {
+        return new JBigDecimal(this.delegate.divide(n.delegate));
     }
 
     @Override
@@ -52,7 +52,7 @@ public class BigDecimal {
     }
 
     public boolean equalsImpl(Object o) {
-        return o instanceof BigDecimal && this.delegate.equals(((BigDecimal)o).delegate);
+        return o instanceof JBigDecimal && this.delegate.equals(((JBigDecimal)o).delegate);
     }
 
     public int hashCodeImpl() {
