@@ -21,7 +21,7 @@ kotlin {
             val javaObjc by cinterops.creating {
                 defFile("$projectDir/src/iosMain/cinterop/iosSimulatorArm64.def")
                 includeDirs(
-                    "$projectDir/src/iosMain/objc/src",
+                    "$projectDir/src/iosMain/objc/src/com/papacekb/kbignum/",
                     "$projectDir/../../j2objc/include"
                 )
                 extraOpts(

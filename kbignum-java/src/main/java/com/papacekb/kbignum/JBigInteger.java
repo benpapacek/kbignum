@@ -168,8 +168,8 @@ public class JBigInteger implements Comparable<JBigInteger> {
         return delegate.testBit(n);
     }
 
-    public byte[] toByteArray() {
-        return delegate.toByteArray();
+    public JByteArray toByteArray() {
+        return new JByteArray(delegate.toByteArray());
     }
 
     public JBigInteger xor(JBigInteger n) {

@@ -76,7 +76,7 @@ actual class KBigInteger private constructor(private val delegate: JBigInteger) 
 
     actual fun testBit(n: Int): Boolean = delegate.testBit(n)
 
-    actual fun toByteArray(): ByteArray = delegate.toByteArray()
+    actual fun toByteArray(): ByteArray = delegate.toByteArray().bytes
 
     actual fun xor(n: KBigInteger): KBigInteger = KBigInteger(delegate.xor(n.delegate))
 

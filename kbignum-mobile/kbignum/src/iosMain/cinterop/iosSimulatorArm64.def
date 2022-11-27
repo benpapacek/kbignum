@@ -1,5 +1,5 @@
 language = Objective-C
-headers = com/papacekb/kbignum/JBigDecimal.h com/papacekb/kbignum/JBigInteger.h
+headers = JBigDecimal.h JBigInteger.h JByteArray.h
 package = javaObjc
 linkerOpts = -l iconv -l z -framework Security -framework UIKit
 staticLibraries = libKbignum-iosSimulatorArm64.a libjre_core.a libjre_emul.a libjre_net.a libjre_security.a

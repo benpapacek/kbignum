@@ -84,7 +84,12 @@ actual class KBigInteger private constructor(private val delegate: ComPapacekbKb
     actual fun testBit(n: Int): Boolean = delegate.testBitWithInt(n)
 
     actual fun toByteArray(): ByteArray {
-        return ByteArray(2) // TODO
+        val jByteArray = delegate.toByteArray()!!
+        val byteArray = ByteArray(jByteArray.getSize())
+        (byteArray.indices).forEach { i ->
+            byteArray[i] = jByteArray.getByteAtWithInt(i)
+        }
+        return byteArray
     }
 
     actual fun xor(n: KBigInteger): KBigInteger = KBigInteger(delegate.xor__WithComPapacekbKbignumJBigInteger(n.delegate)!!)
