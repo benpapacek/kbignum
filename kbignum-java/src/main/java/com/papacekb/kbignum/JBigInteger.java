@@ -58,7 +58,7 @@ public class JBigInteger implements Comparable<JBigInteger> {
 
     public JBigInteger[] divideAndRemainder(JBigInteger n) {
         java.math.BigInteger[] result = delegate.divideAndRemainder(n.delegate);
-        return new JBigInteger[]{
+        return new JBigInteger[] {
                 new JBigInteger(result[0]),
                 new JBigInteger(result[1]),
         };

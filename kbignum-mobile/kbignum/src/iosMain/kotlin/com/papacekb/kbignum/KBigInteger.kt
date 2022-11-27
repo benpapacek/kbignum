@@ -1,5 +1,5 @@
 package com.papacekb.kbignum
-import javaObjc.*
+import javaObjc.ComPapacekbKbignumJBigInteger
 
 actual class KBigInteger private constructor(private val delegate: ComPapacekbKbignumJBigInteger) {
 
@@ -27,10 +27,73 @@ actual class KBigInteger private constructor(private val delegate: ComPapacekbKb
 
     actual fun divide(n: KBigInteger): KBigInteger = KBigInteger(delegate.divideWithComPapacekbKbignumJBigInteger(n.delegate)!!)
 
+    actual fun divideAndRemainder(n: KBigInteger): Array<KBigInteger> {
+        val delegateResult = delegate.divideAndRemainderWithComPapacekbKbignumJBigInteger(n.delegate)!!
+        return arrayOf(
+            KBigInteger(delegateResult.objectAtIndex(0) as ComPapacekbKbignumJBigInteger),
+            KBigInteger(delegateResult.objectAtIndex(1) as ComPapacekbKbignumJBigInteger),
+        )
+    }
+
+    actual fun doubleValue(): Double = delegate.doubleValue()
+
+    actual fun flipBit(n: Int): KBigInteger = KBigInteger(delegate.flipBitWithInt(n)!!)
+
+    actual fun floatValue(): Float = delegate.floatValue()
+
+    actual fun gcd(n: KBigInteger): KBigInteger = KBigInteger(delegate.gcdWithComPapacekbKbignumJBigInteger(n.delegate)!!)
+
+    actual fun getLowestSetBit(): Int = delegate.getLowestSetBit()
+
+    actual fun intValue(): Int = delegate.intValue()
+
+    actual fun isProbablePrime(certainty: Int): Boolean = delegate.isProbablePrimeWithInt(certainty)
+
+    actual fun longValue(): Long = delegate.longValue()
+
+    actual fun max(n: KBigInteger): KBigInteger = KBigInteger(delegate.maxWithComPapacekbKbignumJBigInteger(n.delegate)!!)
+
+    actual fun min(n: KBigInteger): KBigInteger = KBigInteger(delegate.minWithComPapacekbKbignumJBigInteger(n.delegate)!!)
+
+    actual fun mod(n: KBigInteger): KBigInteger = KBigInteger(delegate.modWithComPapacekbKbignumJBigInteger(n.delegate)!!)
+
+    actual fun modInverse(n: KBigInteger): KBigInteger = KBigInteger(delegate.modInverseWithComPapacekbKbignumJBigInteger(n.delegate)!!)
+
+    actual fun modPow(exp: KBigInteger, m: KBigInteger): KBigInteger = KBigInteger(delegate.modPowWithComPapacekbKbignumJBigInteger(exp.delegate, m.delegate)!!)
+
+    actual fun negate(): KBigInteger = KBigInteger(delegate.negate()!!)
+
+    actual fun nextProbablePrime(): KBigInteger = KBigInteger(delegate.nextProbablePrime()!!)
+
+    actual fun not(): KBigInteger = KBigInteger(delegate.not__()!!)
+
+    actual fun or(n: KBigInteger): KBigInteger = KBigInteger(delegate.or__WithComPapacekbKbignumJBigInteger(n.delegate)!!)
+
+    actual fun pow(exp: Int): KBigInteger = KBigInteger(delegate.powWithInt(exp)!!)
+
+    actual fun remainder(n: KBigInteger): KBigInteger = KBigInteger(delegate.remainderWithComPapacekbKbignumJBigInteger(n.delegate)!!)
+
+    actual fun setBit(n: Int): KBigInteger = KBigInteger(delegate.setBitWithInt(n)!!)
+
+    actual fun shiftLeft(n: Int): KBigInteger = KBigInteger(delegate.shiftLeftWithInt(n)!!)
+
+    actual fun shiftRight(n: Int): KBigInteger = KBigInteger(delegate.shiftRightWithInt(n)!!)
+
+    actual fun signum(): Int = delegate.signum()
+
+    actual fun testBit(n: Int): Boolean = delegate.testBitWithInt(n)
+
+    actual fun toByteArray(): ByteArray {
+        return ByteArray(2) // TODO
+    }
+
+    actual fun xor(n: KBigInteger): KBigInteger = KBigInteger(delegate.xor__WithComPapacekbKbignumJBigInteger(n.delegate)!!)
+
+    actual operator fun compareTo(other: KBigInteger): Int = delegate.compareToWithId(other.delegate)
+
     actual override fun equals(other: Any?): Boolean = delegate.equalsImplWithId(other)
 
     actual override fun hashCode(): Int = delegate.hashCodeImpl()
 
     actual override fun toString(): String = delegate.toStringImpl()!!
-
 }

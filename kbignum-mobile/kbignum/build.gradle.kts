@@ -41,7 +41,9 @@ kotlin {
                 implementation("com.ionspin.kotlin:bignum:0.3.7")
             }
         }
-        val androidMain by getting
+        val androidMain by getting {
+            kotlin.srcDir("$projectDir/../../kbignum-java/src/main/java")
+        }
         val androidTest by getting
 //        val iosX64Main by getting
 //        val iosArm64Main by getting
