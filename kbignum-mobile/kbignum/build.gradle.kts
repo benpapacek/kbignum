@@ -41,8 +41,13 @@ kotlin {
                 implementation("com.ionspin.kotlin:bignum:0.3.7")
             }
         }
+        // Must be defined before androidMain and jvmMain
+        val commonJvmAndroid = create("commonJvmAndroid") {
+            dependsOn(commonMain)
+        }
         val androidMain by getting {
-            kotlin.srcDir("$projectDir/../../kbignum-java/src/main/java")
+            kotlin.srcDir("$projectDir/src/commonJvmAndroid/kotlin")
+            dependsOn(commonJvmAndroid)
         }
         val androidTest by getting
 //        val iosX64Main by getting
