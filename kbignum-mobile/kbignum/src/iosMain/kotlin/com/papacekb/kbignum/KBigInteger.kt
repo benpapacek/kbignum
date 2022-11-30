@@ -96,7 +96,7 @@ actual class KBigInteger private constructor(private val delegate: ComPapacekbKb
 
     actual operator fun compareTo(other: KBigInteger): Int = delegate.compareToWithId(other.delegate)
 
-    actual override fun equals(other: Any?): Boolean = delegate.equalsImplWithId(other)
+    actual override fun equals(other: Any?): Boolean = delegate.equalsImplWithId((other as? KBigInteger)?.delegate)
 
     actual override fun hashCode(): Int = delegate.hashCodeImpl()
 
