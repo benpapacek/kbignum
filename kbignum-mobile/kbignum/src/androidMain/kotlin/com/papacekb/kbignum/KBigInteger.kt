@@ -82,7 +82,9 @@ actual class KBigInteger private constructor(private val delegate: java.math.Big
 
     actual operator fun compareTo(other: KBigInteger): Int = delegate.compareTo(other.delegate)
 
-    actual override fun equals(other: Any?): Boolean = delegate == other
+    actual override fun equals(other: Any?): Boolean {
+        return delegate == (other as? KBigInteger)?.delegate
+    }
 
     actual override fun hashCode(): Int = delegate.hashCode()
 
