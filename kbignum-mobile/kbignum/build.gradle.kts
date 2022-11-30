@@ -42,13 +42,7 @@ kotlin {
             }
         }
         // Must be defined before androidMain and jvmMain
-        val commonJvmAndroid = create("commonJvmAndroid") {
-            dependsOn(commonMain)
-        }
-        val androidMain by getting {
-            kotlin.srcDir("$projectDir/src/commonJvmAndroid/kotlin")
-            dependsOn(commonJvmAndroid)
-        }
+        val androidMain by getting
         val androidTest by getting
 //        val iosX64Main by getting
 //        val iosArm64Main by getting

@@ -1,10 +1,10 @@
 package com.papacekb.kbignum
 
-actual class KBigInteger private constructor(private val delegate: JBigInteger) {
+actual class KBigInteger private constructor(private val delegate: java.math.BigInteger) {
 
-    actual constructor(value: String): this(JBigInteger(value))
+    actual constructor(value: String): this(java.math.BigInteger(value))
 
-    actual constructor(value: Long): this(JBigInteger(value))
+    actual constructor(value: Long): this(java.math.BigInteger.valueOf(value))
 
     actual fun abs(): KBigInteger = KBigInteger(delegate.abs())
 
@@ -28,21 +28,21 @@ actual class KBigInteger private constructor(private val delegate: JBigInteger) 
 
     actual fun divideAndRemainder(n: KBigInteger): Array<KBigInteger> = delegate.divideAndRemainder(n.delegate).map { KBigInteger(it) }.toTypedArray()
 
-    actual fun doubleValue(): Double = delegate.doubleValue()
+    actual fun doubleValue(): Double = delegate.toDouble()
 
     actual fun flipBit(n: Int): KBigInteger = KBigInteger(delegate.flipBit(n))
 
-    actual fun floatValue(): Float = delegate.floatValue()
+    actual fun floatValue(): Float = delegate.toFloat()
 
     actual fun gcd(n: KBigInteger): KBigInteger = KBigInteger(delegate.gcd(n.delegate))
 
     actual fun getLowestSetBit(): Int = delegate.lowestSetBit
 
-    actual fun intValue(): Int = delegate.intValue()
+    actual fun intValue(): Int = delegate.toInt()
 
     actual fun isProbablePrime(certainty: Int): Boolean = delegate.isProbablePrime(certainty)
 
-    actual fun longValue(): Long = delegate.longValue()
+    actual fun longValue(): Long = delegate.toLong()
 
     actual fun max(n: KBigInteger): KBigInteger = KBigInteger(delegate.max(n.delegate))
 
@@ -76,7 +76,7 @@ actual class KBigInteger private constructor(private val delegate: JBigInteger) 
 
     actual fun testBit(n: Int): Boolean = delegate.testBit(n)
 
-    actual fun toByteArray(): ByteArray = delegate.toByteArray().bytes
+    actual fun toByteArray(): ByteArray = delegate.toByteArray()
 
     actual fun xor(n: KBigInteger): KBigInteger = KBigInteger(delegate.xor(n.delegate))
 
