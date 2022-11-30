@@ -17,6 +17,27 @@ actual class KBigDecimal private constructor(private val delegate: java.math.Big
 
     actual fun add(n: KBigDecimal): KBigDecimal = KBigDecimal(this.delegate.add(n.delegate))
 
+    actual fun add(n: KBigDecimal, mc: KMathContext): KBigDecimal = KBigDecimal(this.delegate.add(n.delegate, mc.toMathContext()))
+
+    actual fun byteValueExact(): Byte = delegate.byteValueExact()
+
+    actual operator fun compareTo(n: KBigDecimal): Int = delegate.compareTo(n.delegate)
+
+    actual fun divide(n: KBigDecimal, scale: Int, roundingMode: KRoundingMode): KBigDecimal = KBigDecimal(delegate.divide(n.delegate, scale, roundingMode.toRoundingMode()))
+
+    actual fun divide(n: KBigDecimal, roundingMode: KRoundingMode): KBigDecimal = KBigDecimal(delegate.divide(n.delegate, roundingMode.toRoundingMode()))
+
+    actual fun divide(n: KBigDecimal, mc: KMathContext): KBigDecimal = KBigDecimal(delegate.divide(n.delegate, mc.toMathContext()))
+
+    actual fun divideAndRemainder(n: KBigDecimal): Array<KBigDecimal> = delegate.divideAndRemainder(n.delegate).map { KBigDecimal(it) }.toTypedArray()
+
+    actual fun divideAndRemainder(n: KBigDecimal, mc: KMathContext): Array<KBigDecimal> =
+        delegate.divideAndRemainder(n.delegate, mc.toMathContext()).map { KBigDecimal(it) }.toTypedArray()
+
+    actual fun divideToIntegralValue(n: KBigDecimal): KBigDecimal = KBigDecimal(delegate.divideToIntegralValue(n.delegate))
+
+    actual fun divideToIntegralValue(n: KBigDecimal, mc: KMathContext): KBigDecimal = KBigDecimal(delegate.divideToIntegralValue(n.delegate, mc.toMathContext()))
+
     actual fun subtract(n: KBigDecimal): KBigDecimal = KBigDecimal(this.delegate.subtract(n.delegate))
 
     actual fun multiply(n: KBigDecimal): KBigDecimal = KBigDecimal(this.delegate.multiply(n.delegate))
@@ -33,6 +54,6 @@ actual class KBigDecimal private constructor(private val delegate: java.math.Big
 
 }
 
-fun KMathContext.toMathContext() = MathContext(precision, kRoundingMode.toRoundingMode())
+private fun KMathContext.toMathContext() = MathContext(precision, kRoundingMode.toRoundingMode())
 
-fun KRoundingMode.toRoundingMode() = RoundingMode.valueOf(name)
+private fun KRoundingMode.toRoundingMode() = RoundingMode.valueOf(name)

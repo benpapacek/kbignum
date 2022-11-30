@@ -1,6 +1,7 @@
 package com.papacekb.kbignum;
 
-import java.math.MathContext;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 public class JBigDecimal {
 
@@ -32,16 +33,65 @@ public class JBigDecimal {
         return new JBigDecimal(this.delegate.add(n.delegate));
     }
 
+    public JBigDecimal add(JBigDecimal n, JMathContext mc) {
+        return new JBigDecimal(delegate.add(n.delegate, mc.delegate));
+    }
+
+    public byte byteValueExact() {
+        return delegate.byteValueExact();
+    }
+
+    public int compareTo(JBigDecimal n) {
+        return delegate.compareTo(n.delegate);
+    }
+
+    @SuppressWarnings("BigDecimalMethodWithoutRoundingCalled")
+    public JBigDecimal divide(JBigDecimal n) {
+        return new JBigDecimal(this.delegate.divide(n.delegate));
+    }
+
+    public JBigDecimal divide(JBigDecimal n, int scale, String roundingMode) {
+        return new JBigDecimal(this.delegate.divide(n.delegate, scale, RoundingMode.valueOf(roundingMode)));
+    }
+
+    public JBigDecimal divide(JBigDecimal n, String roundingMode) {
+        return new JBigDecimal(this.delegate.divide(n.delegate, RoundingMode.valueOf(roundingMode)));
+    }
+
+    public JBigDecimal divide(JBigDecimal n, JMathContext mc) {
+        return new JBigDecimal(this.delegate.divide(n.delegate, mc.delegate));
+    }
+
+    public JBigDecimal[] divideAndRemainder(JBigDecimal n) {
+        BigDecimal[] result = delegate.divideAndRemainder(n.delegate);
+        return new JBigDecimal[]{
+                new JBigDecimal(result[0]),
+                new JBigDecimal(result[1]),
+        };
+    }
+
+    public JBigDecimal[] divideAndRemainder(JBigDecimal n, JMathContext mc) {
+        BigDecimal[] result = delegate.divideAndRemainder(n.delegate, mc.delegate);
+        return new JBigDecimal[]{
+                new JBigDecimal(result[0]),
+                new JBigDecimal(result[1]),
+        };
+    }
+
+    public JBigDecimal divideToIntegralValue(JBigDecimal n) {
+        return new JBigDecimal(delegate.divideToIntegralValue(n.delegate));
+    }
+
+    public JBigDecimal divideToIntegralValue(JBigDecimal n, JMathContext mc) {
+        return new JBigDecimal(delegate.divideToIntegralValue(n.delegate, mc.delegate));
+    }
+
     public JBigDecimal subtract(JBigDecimal n) {
         return new JBigDecimal(this.delegate.subtract(n.delegate));
     }
 
     public JBigDecimal multiply(JBigDecimal n) {
         return new JBigDecimal(this.delegate.multiply(n.delegate));
-    }
-
-    public JBigDecimal divide(JBigDecimal n) {
-        return new JBigDecimal(this.delegate.divide(n.delegate));
     }
 
     @Override

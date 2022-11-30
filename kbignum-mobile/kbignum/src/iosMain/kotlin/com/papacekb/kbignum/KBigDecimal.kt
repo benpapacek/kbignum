@@ -1,5 +1,6 @@
 package com.papacekb.kbignum
-import javaObjc.*
+import javaObjc.ComPapacekbKbignumJBigDecimal
+import javaObjc.ComPapacekbKbignumJMathContext
 
 actual class KBigDecimal private constructor(private val delegate: ComPapacekbKbignumJBigDecimal) {
 
@@ -17,6 +18,42 @@ actual class KBigDecimal private constructor(private val delegate: ComPapacekbKb
 
     actual fun add(n: KBigDecimal) = KBigDecimal(this.delegate.addWithComPapacekbKbignumJBigDecimal(n.delegate)!!)
 
+    actual fun add(n: KBigDecimal, mc: KMathContext): KBigDecimal = KBigDecimal(this.delegate.addWithComPapacekbKbignumJBigDecimal(n.delegate, mc.toMathContext())!!)
+
+    actual fun byteValueExact(): Byte = delegate.byteValueExact()
+
+    actual operator fun compareTo(n: KBigDecimal): Int = delegate.compareToWithComPapacekbKbignumJBigDecimal(n.delegate)
+
+    actual fun divide(n: KBigDecimal, scale: Int, roundingMode: KRoundingMode): KBigDecimal =
+        KBigDecimal(delegate.divideWithComPapacekbKbignumJBigDecimal(n.delegate, scale, roundingMode.name)!!)
+
+    actual fun divide(n: KBigDecimal, roundingMode: KRoundingMode): KBigDecimal =
+        KBigDecimal(delegate.divideWithComPapacekbKbignumJBigDecimal(n.delegate, roundingMode.name)!!)
+
+    actual fun divide(n: KBigDecimal, mc: KMathContext): KBigDecimal =
+        KBigDecimal(delegate.divideWithComPapacekbKbignumJBigDecimal(n.delegate, mc.toMathContext())!!)
+
+    actual fun divideAndRemainder(n: KBigDecimal): Array<KBigDecimal> {
+        val result = delegate.divideAndRemainderWithComPapacekbKbignumJBigDecimal(n.delegate)!!
+        return arrayOf(
+            KBigDecimal(result.objectAtIndex(0) as ComPapacekbKbignumJBigDecimal),
+            KBigDecimal(result.objectAtIndex(1) as ComPapacekbKbignumJBigDecimal)
+        )
+    }
+
+    actual fun divideAndRemainder(n: KBigDecimal, mc: KMathContext): Array<KBigDecimal> {
+        val result = delegate.divideAndRemainderWithComPapacekbKbignumJBigDecimal(n.delegate, mc.toMathContext())!!
+        return arrayOf(
+            KBigDecimal(result.objectAtIndex(0) as ComPapacekbKbignumJBigDecimal),
+            KBigDecimal(result.objectAtIndex(1) as ComPapacekbKbignumJBigDecimal)
+        )
+    }
+
+    actual fun divideToIntegralValue(n: KBigDecimal): KBigDecimal = KBigDecimal(n.delegate.divideToIntegralValueWithComPapacekbKbignumJBigDecimal(n.delegate)!!)
+
+    actual fun divideToIntegralValue(n: KBigDecimal, mc: KMathContext): KBigDecimal =
+        KBigDecimal(n.delegate.divideToIntegralValueWithComPapacekbKbignumJBigDecimal(n.delegate, mc.toMathContext())!!)
+
     actual fun subtract(n: KBigDecimal) = KBigDecimal(this.delegate.subtractWithComPapacekbKbignumJBigDecimal(n.delegate)!!)
 
     actual fun multiply(n: KBigDecimal) = KBigDecimal(this.delegate.multiplyWithComPapacekbKbignumJBigDecimal(n.delegate)!!)
@@ -30,6 +67,7 @@ actual class KBigDecimal private constructor(private val delegate: ComPapacekbKb
     actual override fun hashCode() = this.delegate.hashCode()
 
     actual override fun toString() = this.delegate.toString()
+
 }
 
-fun KMathContext.toMathContext() = ComPapacekbKbignumJMathContext(precision, kRoundingMode.name)
+private fun KMathContext.toMathContext() = ComPapacekbKbignumJMathContext(precision, kRoundingMode.name)
