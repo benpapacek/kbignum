@@ -1,5 +1,8 @@
 package com.papacekb.kbignum
 
+import java.math.MathContext
+import java.math.RoundingMode
+
 actual class KBigDecimal private constructor(private val delegate: java.math.BigDecimal) {
 
     actual constructor(value: String): this(java.math.BigDecimal(value))
@@ -7,6 +10,10 @@ actual class KBigDecimal private constructor(private val delegate: java.math.Big
     actual constructor(value: Double): this(java.math.BigDecimal.valueOf(value))
 
     actual constructor(value: Long): this(java.math.BigDecimal.valueOf(value))
+
+    actual fun abs(): KBigDecimal = KBigDecimal(this.delegate.abs())
+
+    actual fun abs(mc: KMathContext): KBigDecimal = KBigDecimal(this.delegate.abs(mc.toMathContext()))
 
     actual fun add(n: KBigDecimal): KBigDecimal = KBigDecimal(this.delegate.add(n.delegate))
 
@@ -23,4 +30,9 @@ actual class KBigDecimal private constructor(private val delegate: java.math.Big
     actual override fun hashCode() = delegate.hashCode()
 
     actual override fun toString() = delegate.toString()
+
 }
+
+fun KMathContext.toMathContext() = MathContext(precision, kRoundingMode.toRoundingMode())
+
+fun KRoundingMode.toRoundingMode() = RoundingMode.valueOf(name)

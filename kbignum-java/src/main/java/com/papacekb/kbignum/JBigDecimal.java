@@ -1,5 +1,7 @@
 package com.papacekb.kbignum;
 
+import java.math.MathContext;
+
 public class JBigDecimal {
 
     private final java.math.BigDecimal delegate;
@@ -18,6 +20,12 @@ public class JBigDecimal {
 
     public JBigDecimal(long value) {
         this.delegate = java.math.BigDecimal.valueOf(value);
+    }
+
+    public JBigDecimal abs() { return new JBigDecimal(delegate.abs()); }
+
+    public JBigDecimal abs(JMathContext mc) {
+        return new JBigDecimal(delegate.abs(mc.delegate));
     }
 
     public JBigDecimal add(JBigDecimal n) {

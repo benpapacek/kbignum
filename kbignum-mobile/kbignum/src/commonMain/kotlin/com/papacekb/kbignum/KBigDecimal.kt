@@ -6,6 +6,10 @@ expect class KBigDecimal(value: String) {
 
     constructor(value: Long)
 
+    fun abs(): KBigDecimal
+
+    fun abs(mc: KMathContext): KBigDecimal
+
     fun add(n: KBigDecimal): KBigDecimal
 
     fun subtract(n: KBigDecimal): KBigDecimal

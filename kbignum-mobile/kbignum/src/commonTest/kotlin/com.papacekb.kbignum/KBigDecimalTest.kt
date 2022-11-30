@@ -6,6 +6,17 @@ import kotlin.test.assertEquals
 class KBigDecimalTest {
 
     @Test
+    fun testAbs() {
+        assertEquals(KBigDecimal("42"), KBigDecimal("-42").abs())
+    }
+
+    @Test
+    fun testAbsWithMathContext() {
+        val mc = KMathContext(4, KRoundingMode.CEILING)
+        assertEquals(KBigDecimal("3.142"), KBigDecimal("3.14159").abs(mc))
+    }
+
+    @Test
     fun testBigDecimalAddition() {
         val a = KBigDecimal(42.0)
         val b = KBigDecimal(21.0)

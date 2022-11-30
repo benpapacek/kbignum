@@ -9,6 +9,12 @@ actual class KBigDecimal private constructor(private val delegate: ComPapacekbKb
 
     actual constructor(value: Long): this(ComPapacekbKbignumJBigDecimal(value))
 
+    actual fun abs(): KBigDecimal = KBigDecimal(this.delegate.abs()!!)
+
+    actual fun abs(mc: KMathContext): KBigDecimal {
+        return KBigDecimal(delegate.absWithComPapacekbKbignumJMathContext(mc.toMathContext())!!)
+    }
+
     actual fun add(n: KBigDecimal) = KBigDecimal(this.delegate.addWithComPapacekbKbignumJBigDecimal(n.delegate)!!)
 
     actual fun subtract(n: KBigDecimal) = KBigDecimal(this.delegate.subtractWithComPapacekbKbignumJBigDecimal(n.delegate)!!)
@@ -24,5 +30,6 @@ actual class KBigDecimal private constructor(private val delegate: ComPapacekbKb
     actual override fun hashCode() = this.delegate.hashCodeImpl()
 
     actual override fun toString() = this.delegate.toStringImpl()!!
-
 }
+
+fun KMathContext.toMathContext() = ComPapacekbKbignumJMathContext(precision, kRoundingMode.name)
