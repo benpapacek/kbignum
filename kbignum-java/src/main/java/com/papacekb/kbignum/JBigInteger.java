@@ -12,7 +12,7 @@ public class JBigInteger implements Comparable<JBigInteger> {
         return new JBigInteger(java.math.BigInteger.probablePrime(bitLength, random));
     }
 
-    private JBigInteger(java.math.BigInteger delegate) {
+    JBigInteger(java.math.BigInteger delegate) {
         this.delegate = delegate;
     }
 
