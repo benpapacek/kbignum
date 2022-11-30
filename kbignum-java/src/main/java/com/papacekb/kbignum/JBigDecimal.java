@@ -203,10 +203,6 @@ public class JBigDecimal {
         return delegate.signum();
     }
 
-    public JBigDecimal sqrt(JMathContext mc) {
-        return new JBigDecimal(delegate.sqrt(mc.delegate));
-    }
-
     public JBigDecimal stripTrailingZeroes() {
         return new JBigDecimal(delegate.stripTrailingZeros());
     }
