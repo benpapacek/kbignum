@@ -24,12 +24,12 @@ actual class KBigDecimal private constructor(private val delegate: ComPapacekbKb
     actual fun divide(n: KBigDecimal) = KBigDecimal(this.delegate.divideWithComPapacekbKbignumJBigDecimal(n.delegate)!!)
 
     actual override fun equals(other: Any?): Boolean {
-        return other is KBigDecimal && other.delegate.equalsImplWithId(this.delegate)
+        return other is KBigDecimal && other.delegate == this.delegate
     }
 
-    actual override fun hashCode() = this.delegate.hashCodeImpl()
+    actual override fun hashCode() = this.delegate.hashCode()
 
-    actual override fun toString() = this.delegate.toStringImpl()!!
+    actual override fun toString() = this.delegate.toString()
 }
 
 fun KMathContext.toMathContext() = ComPapacekbKbignumJMathContext(precision, kRoundingMode.name)

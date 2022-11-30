@@ -46,28 +46,16 @@ public class JBigDecimal {
 
     @Override
     public boolean equals(Object o) {
-        return equalsImpl(o);
+        return o instanceof JBigDecimal && this.delegate.equals(((JBigDecimal)o).delegate);
     }
 
     @Override
     public int hashCode() {
-        return hashCodeImpl();
+        return delegate.hashCode();
     }
 
     @Override
     public String toString() {
-        return toStringImpl();
-    }
-
-    public boolean equalsImpl(Object o) {
-        return o instanceof JBigDecimal && this.delegate.equals(((JBigDecimal)o).delegate);
-    }
-
-    public int hashCodeImpl() {
-        return delegate.hashCode();
-    }
-
-    public String toStringImpl() {
         return delegate.toString();
     }
 
