@@ -1,6 +1,9 @@
+import org.gradle.api.publish.PublishingExtension
+
 plugins {
     kotlin("multiplatform")
     id("com.android.library")
+    id("maven-publish")
 }
 
 kotlin {
@@ -29,6 +32,22 @@ kotlin {
                     "-libraryPath", "$projectDir/../../j2objc/lib/simulator"
                 )
             }
+        }
+    }
+
+    val publicationsFromMainHost = listOf(android(), iosSimulatorArm64()).map { it.name } + "kotlinMultiplatform"
+    configure<PublishingExtension> {
+        publications {
+            matching { it.name in publicationsFromMainHost }.all {
+                val targetPublication = this@all
+                tasks.withType<AbstractPublishToMaven>()
+                    .matching { it.publication == targetPublication }
+                    .configureEach { onlyIf { findProperty("isMainHost") == "true" } }
+            }
+        }
+
+        repositories {
+            maven(url = "com.github.benpapacek:kbignum:master-SNAPSHOT")
         }
     }
 
