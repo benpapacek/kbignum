@@ -31,7 +31,7 @@ rsync -a --prune-empty-dirs --include '*/' --include '*.h' --exclude '*' './src'
 
 cp -f 'build/libKbignum-iosSimulatorArm64.a' ./dist
 
-TARGET_DIR="$ROOT_DIR/kbignum-mobile/kbignum/src/iosMain/objc"
+TARGET_DIR="$ROOT_DIR/kbignum/kbignum/src/iosMain/objc"
 rm -rf $TARGET_DIR
 cp -r ./dist $TARGET_DIR
 

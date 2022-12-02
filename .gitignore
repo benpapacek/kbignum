@@ -5,7 +5,7 @@
 build
 
 /j2objc
-kbignum-mobile/kbignum/src/iosMain/objc/
+kbignum/kbignum/src/iosMain/objc/
 
 /ios/*
 !/ios/project.yml

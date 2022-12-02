@@ -13,5 +13,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "kbignum-mobile"
+rootProject.name = "kbignum"
 include(":kbignum")

@@ -21,7 +21,7 @@ class JBigDecimalTestWriter {
 
     @Test
     fun createJBigDecimalTest() {
-        val file = File("../kbignum-mobile/kbignum/src/commonTest/kotlin/com/papacekb/kbignum/KBigDecimalTest.kt")
+        val file = File("../kbignum/kbignum/src/commonTest/kotlin/com/papacekb/kbignum/KBigDecimalTest.kt")
 
         file.createNewFile()
 
