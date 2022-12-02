@@ -7,16 +7,13 @@ import kotlin.random.Random
 
 class JBigDecimalTestWriter {
 
-    companion object {
-        const val CASES_PER_TEST = 10
-        val LEGAL_ROUNDING_MODES = RoundingMode.values().filterNot { it == RoundingMode.UNNECESSARY }
-    }
-
     private val random = Random(42)
 
     private fun randomBigDecimal() = BigDecimal.valueOf(random.nextInt() * random.nextDouble())
 
-    private fun randomMathContext() = MathContext(random.nextInt(0, 10), LEGAL_ROUNDING_MODES.random())
+    private fun randomRoundingMode() = RoundingMode.values().filterNot { it == RoundingMode.UNNECESSARY }.random()
+
+    private fun randomMathContext() = MathContext(random.nextInt(1, 10), randomRoundingMode())
 
     private fun wrap(n: BigDecimal) = "KBigDecimal(\"$n\")"
     private fun wrapMC(mc: MathContext) = "KMathContext(${mc.precision}, ${mc.roundingMode})"
@@ -79,9 +76,61 @@ class JBigDecimalTestWriter {
             out.println("\t}\n")
 
 
+            out.println("\t@Test fun `test divide`() {")
+            (0..10).forEach { _ ->
+                val a = BigDecimal(random.nextInt(2, 100))
+                val b = a.multiply(randomBigDecimal())
+                out.println("\t\tassertEquals(${wrap(b.divide(a))}, ${wrap(b)}.divide(${wrap(a)}))")
+            }
+            out.println("\t}\n")
+
+
+            out.println("\t@Test fun `test divide with rounding mode`() {")
+            (0..10).forEach { _ ->
+                val a = randomBigDecimal()
+                val b = randomBigDecimal()
+                val roundingMode = randomRoundingMode()
+                out.println("\t\tassertEquals(${wrap(a.divide(b, roundingMode))}, ${wrap(a)}.divide(${wrap(b)}, $roundingMode))")
+            }
+            out.println("\t}\n")
+
+
+            out.println("\t@Test fun `test divide with math context`() {")
+            (0..10).forEach { _ ->
+                val a = randomBigDecimal()
+                val b = randomBigDecimal()
+                val mathContext = randomMathContext()
+                println(mathContext.roundingMode)
+                out.println("\t\tassertEquals(${wrap(a.divide(b, mathContext))}, ${wrap(a)}.divide(${wrap(b)}, ${wrapMC(mathContext)}))")
+            }
+            out.println("\t}\n")
+
+
+            out.println("\t@Test fun `test divideAndRemainder`() {")
+            (0..10).forEach { _ ->
+                val a = randomBigDecimal()
+                val b = randomBigDecimal()
+                val result = a.divideAndRemainder(b)
+                out.println("\t\tassertEquals(listOf(${wrap(result[0])}, ${wrap(result[1])}), " +
+                        "${wrap(a)}.divideAndRemainder(${wrap(b)}).asList())")
+            }
+            out.println("\t}\n")
+
+
+            out.println("\t@Test fun `test divideAndRemainder with math context`() {")
+            (0..10).forEach { _ ->
+                val a = randomBigDecimal()
+                val b = randomBigDecimal()
+                val mathContext = randomMathContext()
+                val result = a.divideAndRemainder(b, mathContext)
+                out.println("\t\tassertEquals(listOf(${wrap(result[0])}, ${wrap(result[1])}), " +
+                        "${wrap(a)}.divideAndRemainder(${wrap(b)}, ${wrapMC(mathContext)}).asList())")
+            }
+            out.println("\t}\n")
+
+
             out.println("\n}")
         }
-
 
 
     }
@@ -91,19 +140,7 @@ class JBigDecimalTestWriter {
 /*
 fun abs(): KBigDecimal
 
-    operator fun compareTo(n: KBigDecimal): Int
 
-    fun divide(n: KBigDecimal): KBigDecimal
-
-    fun divide(n: KBigDecimal, scale: Int, roundingMode: KRoundingMode): KBigDecimal
-
-    fun divide(n: KBigDecimal, roundingMode: KRoundingMode): KBigDecimal
-
-    fun divide(n: KBigDecimal, mc: KMathContext): KBigDecimal
-
-    fun divideAndRemainder(n: KBigDecimal): Array<KBigDecimal>
-
-    fun divideAndRemainder(n: KBigDecimal, mc: KMathContext): Array<KBigDecimal>
 
     fun divideToIntegralValue(n: KBigDecimal): KBigDecimal
 
