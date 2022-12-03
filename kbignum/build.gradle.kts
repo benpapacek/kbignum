@@ -76,7 +76,7 @@ kotlin {
             create<MavenPublication>("maven") {
                 groupId = "com.papacekb"
                 artifactId = "kbignum"
-                version = "0.0.7"
+                version = "0.0.8"
             }
             repositories {
                 maven {
