@@ -11,7 +11,7 @@ publishing {
         create<MavenPublication>("maven") {
             groupId = "com.github.benpapacek"
             artifactId = "kbignum"
-            version = "0.0.2"
+            version = "0.0.4"
         }
     }
 }
