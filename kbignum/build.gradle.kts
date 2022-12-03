@@ -6,16 +6,6 @@ plugins {
     id("maven-publish")
 }
 
-publishing {
-    publications {
-        create<MavenPublication>("maven") {
-            groupId = "com.github.benpapacek"
-            artifactId = "kbignum"
-            version = "0.0.4"
-        }
-    }
-}
-
 kotlin {
     android()
     jvm()
@@ -80,6 +70,24 @@ kotlin {
             iosSimulatorArm64Test.dependsOn(this)
         }
     }
+
+    val publicationsFromMainHost =
+        listOf(android(), jvm(), iosSimulatorArm64()).map { it.name } + "kotlinMultiplatform"
+    publishing {
+        publications {
+            create<MavenPublication>("maven") {
+                groupId = "com.github.benpapacek"
+                artifactId = "kbignum"
+                version = "0.0.5"
+            }
+            matching { it.name in publicationsFromMainHost }.all {
+                val targetPublication = this@all
+                tasks.withType<AbstractPublishToMaven>()
+                    .matching { it.publication == targetPublication }
+                    .configureEach { onlyIf { findProperty("isMainHost") == "true" } }
+            }
+        }
+    }
 }
 
 android {
@@ -90,3 +98,4 @@ android {
         targetSdk = 32
     }
 }
+
