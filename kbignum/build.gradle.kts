@@ -78,7 +78,7 @@ kotlin {
             create<MavenPublication>("maven") {
                 groupId = "com.github.benpapacek"
                 artifactId = "kbignum"
-                version = "0.0.5"
+                version = "0.0.6"
             }
             matching { it.name in publicationsFromMainHost }.all {
                 val targetPublication = this@all
