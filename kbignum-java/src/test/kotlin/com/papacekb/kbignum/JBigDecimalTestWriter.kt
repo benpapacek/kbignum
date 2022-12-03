@@ -1,4 +1,5 @@
-import org.junit.Ignore
+package com.papacekb.kbignum
+
 import org.junit.Test
 import java.io.File
 import java.math.BigDecimal
@@ -19,11 +20,10 @@ class JBigDecimalTestWriter {
     private fun wrap(n: BigDecimal) = "KBigDecimal(\"$n\")"
     private fun wrapMC(mc: MathContext) = "KMathContext(${mc.precision}, ${mc.roundingMode})"
 
-    @Ignore("This is not a test per se, but a way of generating kmm tests " +
-            "which compare results with those of the actual java classes")
+//    @Ignore("This is not a test per se, but a way of generating kmm tests which compare results with those of corresponding java classes")
     @Test
     fun createJBigDecimalTest() {
-        val file = File("src/commonTest/kotlin/com/papacekb/kbignum/KBigDecimalTest.kt")
+        val file = File("../kbignum/src/commonTest/kotlin/com/papacekb/kbignum/KBigDecimalTest.kt")
 
         file.printWriter().use { out ->
             out.println(HEADER)
