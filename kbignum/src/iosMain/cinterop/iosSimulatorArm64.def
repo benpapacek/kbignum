@@ -2,4 +2,4 @@ language = Objective-C
 headers = JBigDecimal.h JBigInteger.h JByteArray.h JMathContext.h
 package = javaObjc
 linkerOpts = -l iconv -l z -framework Security -framework UIKit
-staticLibraries = libKbignum-iosSimulatorArm64.a libjre_core.a libjre_emul.a libjre_net.a libjre_security.a
+staticLibraries = libKbignum-iosSimulatorArm64.a libjre_core.a

@@ -4,7 +4,7 @@ set -ex
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 ROOT_DIR="$SCRIPT_DIR/.."
 
-J2OBJC_DIR="$ROOT_DIR/../j2objc"
+J2OBJC_DIR="$ROOT_DIR/../j2objc/dist"
 
 SOURCES_DIR="$ROOT_DIR/kbignum/src/jvmMain/java"
 IOS_SRC_DIR=$ROOT_DIR/ios/src

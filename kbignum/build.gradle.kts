@@ -26,29 +26,13 @@ kotlin {
                 defFile("$projectDir/src/iosMain/cinterop/iosSimulatorArm64.def")
                 includeDirs(
                     "$projectDir/src/iosMain/objc/src/com/papacekb/kbignum/",
-                    "$projectDir/../../j2objc/include"
+                    "$projectDir/../j2objc/include"
                 )
                 extraOpts(
                     "-libraryPath", "$projectDir/src/iosMain/objc",
-                    "-libraryPath", "$projectDir/../../j2objc/lib/simulator"
+                    "-libraryPath", "$projectDir/../j2objc/lib/simulator"
                 )
             }
-        }
-    }
-
-    val publicationsFromMainHost = listOf(android(), iosSimulatorArm64()).map { it.name } + "kotlinMultiplatform"
-    configure<PublishingExtension> {
-        publications {
-            matching { it.name in publicationsFromMainHost }.all {
-                val targetPublication = this@all
-                tasks.withType<AbstractPublishToMaven>()
-                    .matching { it.publication == targetPublication }
-                    .configureEach { onlyIf { findProperty("isMainHost") == "true" } }
-            }
-        }
-
-        repositories {
-            maven(url = "com.github.benpapacek:kbignum:master-SNAPSHOT")
         }
     }
 
