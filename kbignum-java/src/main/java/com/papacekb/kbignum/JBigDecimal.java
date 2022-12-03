@@ -5,26 +5,26 @@ import java.math.RoundingMode;
 
 public class JBigDecimal {
 
-    private final java.math.BigDecimal delegate;
+    private final BigDecimal delegate;
 
-    private JBigDecimal(java.math.BigDecimal delegate) {
+    private JBigDecimal(BigDecimal delegate) {
         this.delegate = delegate;
     }
 
     public JBigDecimal(String value) {
-        delegate = new java.math.BigDecimal(value);
+        delegate = new BigDecimal(value);
     }
 
     public JBigDecimal(double value) {
-        delegate = java.math.BigDecimal.valueOf(value);
+        delegate = BigDecimal.valueOf(value);
     }
 
     public JBigDecimal(long value) {
-        delegate = java.math.BigDecimal.valueOf(value);
+        delegate = BigDecimal.valueOf(value);
     }
 
     public JBigDecimal(long value, int scale) {
-        delegate = java.math.BigDecimal.valueOf(value, scale);
+        delegate = BigDecimal.valueOf(value, scale);
     }
 
     public JBigDecimal abs() { return new JBigDecimal(delegate.abs()); }

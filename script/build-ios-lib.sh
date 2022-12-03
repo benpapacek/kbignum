@@ -6,7 +6,7 @@ ROOT_DIR="$SCRIPT_DIR/.."
 
 J2OBJC_DIR="$ROOT_DIR/../j2objc/dist"
 
-SOURCES_DIR="$ROOT_DIR/kbignum/src/jvmMain/java"
+SOURCES_DIR="$ROOT_DIR/kbignum-java/src/main/java"
 IOS_SRC_DIR=$ROOT_DIR/ios/src
 
 rm -rf "$IOS_SRC_DIR"

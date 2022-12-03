@@ -48,7 +48,6 @@ kotlin {
         }
         val jvmMain by getting {
             dependsOn(commonMain)
-            kotlin.srcDir("$projectDir/src/jvmMain/java")
         }
         val androidMain by getting
         val androidTest by getting

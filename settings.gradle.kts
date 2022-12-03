@@ -15,3 +15,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "kbignum"
 include(":kbignum")
+include(":kbignum-java")
