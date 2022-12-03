@@ -9,7 +9,6 @@ captures
 local.properties
 xcuserdata
 
-j2objc
 ios/
 !ios/project.yml
 
