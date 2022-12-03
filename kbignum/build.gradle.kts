@@ -1,10 +1,11 @@
-import org.gradle.api.publish.PublishingExtension
-
 plugins {
     kotlin("multiplatform")
     id("com.android.library")
     id("maven-publish")
 }
+
+group = "com.papacekb.kbignum"
+version = "0.0.9"
 
 kotlin {
     android()
@@ -72,30 +73,14 @@ kotlin {
     }
 
     publishing {
-        publications {
-            create<MavenPublication>("maven") {
-                groupId = "com.papacekb"
-                artifactId = "kbignum"
-                version = "0.0.8"
-            }
-            repositories {
-                maven {
-                    name = "GitHubPackages"
-                    url = uri("https://maven.pkg.github.com/benpapacek/kbignum")
-                    credentials {
-                        username = System.getenv("GITHUB_USER")
-                        password = System.getenv("GITHUB_TOKEN")
-                    }
+        repositories {
+            maven {
+                setUrl("https://maven.pkg.github.com/benpapacek/kbignum")
+                credentials {
+                    username = System.getenv("GITHUB_USER")
+                    password = System.getenv("GITHUB_TOKEN")
                 }
             }
-//            val publicationsFromMainHost =
-//                listOf(android(), jvm(), iosSimulatorArm64()).map { it.name } + "kotlinMultiplatform"
-//            matching { it.name in publicationsFromMainHost }.all {
-//                val targetPublication = this@all
-//                tasks.withType<AbstractPublishToMaven>()
-//                    .matching { it.publication == targetPublication }
-//                    .configureEach { onlyIf { findProperty("isMainHost") == "true" } }
-//            }
         }
     }
 }
