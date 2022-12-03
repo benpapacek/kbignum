@@ -6,6 +6,16 @@ plugins {
     id("maven-publish")
 }
 
+publishing {
+    publications {
+        create<MavenPublication>("maven") {
+            groupId = "com.github.benpapacek"
+            artifactId = "kbignum"
+            version = "0.0.2"
+        }
+    }
+}
+
 kotlin {
     android()
     jvm()
