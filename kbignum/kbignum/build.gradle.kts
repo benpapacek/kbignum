@@ -8,6 +8,7 @@ plugins {
 
 kotlin {
     android()
+    jvm()
     
     listOf(
 //        iosX64(),
@@ -60,7 +61,10 @@ kotlin {
                 implementation("com.ionspin.kotlin:bignum:0.3.7")
             }
         }
-        // Must be defined before androidMain and jvmMain
+        val jvmMain by getting {
+            dependsOn(commonMain)
+            kotlin.srcDir("$projectDir/src/jvmMain/java")
+        }
         val androidMain by getting
         val androidTest by getting
 //        val iosX64Main by getting

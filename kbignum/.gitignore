@@ -8,3 +8,7 @@ captures
 .cxx
 local.properties
 xcuserdata
+
+ios/
+!ios/project.yml
+!ios/build-ios-lib.sh
