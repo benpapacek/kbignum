@@ -1,11 +1,15 @@
-
-.DS_Store
+*.iml
 .gradle
 .idea
+.DS_Store
 build
+captures
+.externalNativeBuild
+.cxx
+local.properties
+xcuserdata
 
-/j2objc
-kbignum/kbignum/src/iosMain/objc/
+ios/
+!ios/project.yml
+kbignum/src/iosMain/objc
 
-/ios/*
-!/ios/project.yml

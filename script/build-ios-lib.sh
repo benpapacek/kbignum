@@ -4,9 +4,9 @@ set -ex
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 ROOT_DIR="$SCRIPT_DIR/.."
 
-J2OBJC_DIR="$ROOT_DIR/j2objc"
+J2OBJC_DIR="$ROOT_DIR/../j2objc"
 
-SOURCES_DIR="$ROOT_DIR/kbignum-java/src/main/java"
+SOURCES_DIR="$ROOT_DIR/kbignum/src/jvmMain/java"
 IOS_SRC_DIR=$ROOT_DIR/ios/src
 
 rm -rf "$IOS_SRC_DIR"
@@ -31,7 +31,7 @@ rsync -a --prune-empty-dirs --include '*/' --include '*.h' --exclude '*' './src'
 
 cp -f 'build/libKbignum-iosSimulatorArm64.a' ./dist
 
-TARGET_DIR="$ROOT_DIR/kbignum/kbignum/src/iosMain/objc"
+TARGET_DIR="$ROOT_DIR/kbignum/src/iosMain/objc"
 rm -rf $TARGET_DIR
 cp -r ./dist $TARGET_DIR
 

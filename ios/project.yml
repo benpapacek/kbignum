@@ -13,7 +13,7 @@ targets:
       configs:
         debug:
           CONFIGURATION_BUILD_DIR: build
-          J2OBJC_HOME: $PROJECT_DIR/../j2objc
+          J2OBJC_HOME: $PROJECT_DIR/../../j2objc
           HEADER_SEARCH_PATHS: $J2OBJC_HOME/include $SOURCE_ROOT/src
           LIBRARY_SEARCH_PATHS: $J2OBJC_HOME/lib
           OTHER_LDFLAGS: -ObjC -liconv -lz -framework Security
