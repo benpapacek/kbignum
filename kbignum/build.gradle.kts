@@ -71,21 +71,31 @@ kotlin {
         }
     }
 
-    val publicationsFromMainHost =
-        listOf(android(), jvm(), iosSimulatorArm64()).map { it.name } + "kotlinMultiplatform"
     publishing {
         publications {
             create<MavenPublication>("maven") {
-                groupId = "com.github.benpapacek"
+                groupId = "com.papacekb"
                 artifactId = "kbignum"
-                version = "0.0.6"
+                version = "0.0.7"
             }
-            matching { it.name in publicationsFromMainHost }.all {
-                val targetPublication = this@all
-                tasks.withType<AbstractPublishToMaven>()
-                    .matching { it.publication == targetPublication }
-                    .configureEach { onlyIf { findProperty("isMainHost") == "true" } }
+            repositories {
+                maven {
+                    name = "GitHubPackages"
+                    url = uri("https://maven.pkg.github.com/benpapacek/kbignum")
+                    credentials {
+                        username = System.getenv("GITHUB_USER")
+                        password = System.getenv("GITHUB_TOKEN")
+                    }
+                }
             }
+//            val publicationsFromMainHost =
+//                listOf(android(), jvm(), iosSimulatorArm64()).map { it.name } + "kotlinMultiplatform"
+//            matching { it.name in publicationsFromMainHost }.all {
+//                val targetPublication = this@all
+//                tasks.withType<AbstractPublishToMaven>()
+//                    .matching { it.publication == targetPublication }
+//                    .configureEach { onlyIf { findProperty("isMainHost") == "true" } }
+//            }
         }
     }
 }
