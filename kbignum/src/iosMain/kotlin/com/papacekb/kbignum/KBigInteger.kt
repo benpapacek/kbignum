@@ -1,7 +1,7 @@
 package com.papacekb.kbignum
 import javaObjc.ComPapacekbKbignumJBigInteger
 
-actual class KBigInteger private constructor(private val delegate: ComPapacekbKbignumJBigInteger) {
+actual class KBigInteger constructor(private val delegate: ComPapacekbKbignumJBigInteger) {
 
     actual constructor(value: String): this(ComPapacekbKbignumJBigInteger(value))
 

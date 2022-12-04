@@ -1,6 +1,6 @@
 package com.papacekb.kbignum
 
-actual class KBigInteger private constructor(private val delegate: java.math.BigInteger) {
+actual class KBigInteger constructor(private val delegate: java.math.BigInteger) {
 
     actual constructor(value: String): this(java.math.BigInteger(value))
 
