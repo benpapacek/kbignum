@@ -129,6 +129,27 @@ class JBigDecimalTestWriter {
             out.println("\t}\n")
 
 
+            out.println("\t@Test fun `test divideToIntegralValue`() {")
+            (0..10).forEach { _ ->
+                val a = randomBigDecimal()
+                val b = randomBigDecimal()
+                val result = a.divideToIntegralValue(b)
+                out.println("\t\tassertEquals(${wrap(result)}, ${wrap(a)}.divideToIntegralValue(${wrap(b)}))")
+            }
+            out.println("\t}\n")
+
+
+            out.println("\t@Test fun `test divideToIntegralValue with math context`() {")
+            (0..10).forEach { _ ->
+                val a = randomBigDecimal()
+                val b = randomBigDecimal()
+                val mc = randomMathContext()
+                val result = a.divideToIntegralValue(b, mc)
+                out.println("\t\tassertEquals(${wrap(result)}, ${wrap(a)}.divideToIntegralValue(${wrap(b)}, ${wrapMC(mc)}))")
+            }
+            out.println("\t}\n")
+
+
             out.println("\n}")
         }
 
@@ -139,12 +160,6 @@ class JBigDecimalTestWriter {
 
 /*
 fun abs(): KBigDecimal
-
-
-
-    fun divideToIntegralValue(n: KBigDecimal): KBigDecimal
-
-    fun divideToIntegralValue(n: KBigDecimal, mc: KMathContext): KBigDecimal
 
     fun subtract(n: KBigDecimal): KBigDecimal
 

@@ -36,17 +36,17 @@ class KBigDecimalTest {
 	}
 
 	@Test fun `test add with mc`() {
-		assertEquals(KBigDecimal("-1.150267E+9"), KBigDecimal("-675844085.4233485").add(KBigDecimal("-474423814.94483757"), KMathContext(7, CEILING)))
-		assertEquals(KBigDecimal("-4.02E+8"), KBigDecimal("759876622.173756").add(KBigDecimal("-1161332847.470284"), KMathContext(3, UP)))
-		assertEquals(KBigDecimal("1.0627531E+9"), KBigDecimal("924565987.3278322").add(KBigDecimal("138187048.76235235"), KMathContext(8, UP)))
-		assertEquals(KBigDecimal("-9.9401E+8"), KBigDecimal("-1406996614.7088475").add(KBigDecimal("412990833.2978394"), KMathContext(5, HALF_UP)))
-		assertEquals(KBigDecimal("373407337"), KBigDecimal("728625410.9706949").add(KBigDecimal("-355218074.3232708"), KMathContext(9, HALF_UP)))
-		assertEquals(KBigDecimal("9.9613068E+8"), KBigDecimal("-379804388.84803605").add(KBigDecimal("1375935074.0174305"), KMathContext(8, DOWN)))
-		assertEquals(KBigDecimal("4E+8"), KBigDecimal("199199851.7758977").add(KBigDecimal("157505219.99844605"), KMathContext(1, HALF_EVEN)))
-		assertEquals(KBigDecimal("-7.7595186E+8"), KBigDecimal("-1128584244.777766").add(KBigDecimal("352632385.3791467"), KMathContext(8, HALF_EVEN)))
-		assertEquals(KBigDecimal("1.1463995E+9"), KBigDecimal("354109522.14027476").add(KBigDecimal("792289997.9249882"), KMathContext(8, HALF_EVEN)))
-		assertEquals(KBigDecimal("-1.2331E+8"), KBigDecimal("-244105627.82623768").add(KBigDecimal("120793866.86782597"), KMathContext(5, HALF_EVEN)))
-		assertEquals(KBigDecimal("-9.9467E+8"), KBigDecimal("-522341963.14925516").add(KBigDecimal("-472325589.02161324"), KMathContext(5, UP)))
+		assertEquals(KBigDecimal("-1.150268E+9"), KBigDecimal("-675844085.4233485").add(KBigDecimal("-474423814.94483757"), KMathContext(7, HALF_UP)))
+		assertEquals(KBigDecimal("-4.01E+8"), KBigDecimal("759876622.173756").add(KBigDecimal("-1161332847.470284"), KMathContext(3, HALF_EVEN)))
+		assertEquals(KBigDecimal("1.0627530E+9"), KBigDecimal("924565987.3278322").add(KBigDecimal("138187048.76235235"), KMathContext(8, HALF_UP)))
+		assertEquals(KBigDecimal("-9.9401E+8"), KBigDecimal("-1406996614.7088475").add(KBigDecimal("412990833.2978394"), KMathContext(5, HALF_EVEN)))
+		assertEquals(KBigDecimal("373407337"), KBigDecimal("728625410.9706949").add(KBigDecimal("-355218074.3232708"), KMathContext(9, HALF_EVEN)))
+		assertEquals(KBigDecimal("9.9613069E+8"), KBigDecimal("-379804388.84803605").add(KBigDecimal("1375935074.0174305"), KMathContext(8, CEILING)))
+		assertEquals(KBigDecimal("3E+8"), KBigDecimal("199199851.7758977").add(KBigDecimal("157505219.99844605"), KMathContext(1, DOWN)))
+		assertEquals(KBigDecimal("-7.7595186E+8"), KBigDecimal("-1128584244.777766").add(KBigDecimal("352632385.3791467"), KMathContext(8, HALF_DOWN)))
+		assertEquals(KBigDecimal("1.1463995E+9"), KBigDecimal("354109522.14027476").add(KBigDecimal("792289997.9249882"), KMathContext(8, FLOOR)))
+		assertEquals(KBigDecimal("-1.2332E+8"), KBigDecimal("-244105627.82623768").add(KBigDecimal("120793866.86782597"), KMathContext(5, UP)))
+		assertEquals(KBigDecimal("-9.9467E+8"), KBigDecimal("-522341963.14925516").add(KBigDecimal("-472325589.02161324"), KMathContext(5, HALF_UP)))
 	}
 
 	@Test fun `test byteValueExact`() {
@@ -92,31 +92,31 @@ class KBigDecimalTest {
 	}
 
 	@Test fun `test divide with rounding mode`() {
-		assertEquals(KBigDecimal("6.767745"), KBigDecimal("1480823056.843158").divide(KBigDecimal("218805968.26770258"), HALF_DOWN))
-		assertEquals(KBigDecimal("6.32869147"), KBigDecimal("-114075683.93385269").divide(KBigDecimal("-18025161.200536225"), UP))
-		assertEquals(KBigDecimal("22.6244499"), KBigDecimal("909140873.6147215").divide(KBigDecimal("40183999.0187007"), DOWN))
-		assertEquals(KBigDecimal("1.7820177"), KBigDecimal("1298872479.0962298").divide(KBigDecimal("728877430.1486664"), CEILING))
-		assertEquals(KBigDecimal("-0.33476561"), KBigDecimal("18147998.73683848").divide(KBigDecimal("-54211060.0672527"), DOWN))
-		assertEquals(KBigDecimal("0.46328126"), KBigDecimal("-254964721.59129804").divide(KBigDecimal("-550345435.2300467"), CEILING))
-		assertEquals(KBigDecimal("1.06437207"), KBigDecimal("-294148612.06468046").divide(KBigDecimal("-276358823.690559"), HALF_EVEN))
-		assertEquals(KBigDecimal("-1.4676572"), KBigDecimal("-292353598.6409018").divide(KBigDecimal("199197463.1572587"), DOWN))
-		assertEquals(KBigDecimal("-5.1666804"), KBigDecimal("778374847.6050745").divide(KBigDecimal("-150652795.90001202"), HALF_UP))
-		assertEquals(KBigDecimal("-0.3961429"), KBigDecimal("-571228995.7521011").divide(KBigDecimal("1441976860.8424008"), CEILING))
-		assertEquals(KBigDecimal("-3.1837350"), KBigDecimal("-235813042.5722397").divide(KBigDecimal("74068051.56425187"), FLOOR))
+		assertEquals(KBigDecimal("6.767745"), KBigDecimal("1480823056.843158").divide(KBigDecimal("218805968.26770258"), DOWN))
+		assertEquals(KBigDecimal("6.32869147"), KBigDecimal("-114075683.93385269").divide(KBigDecimal("-18025161.200536225"), HALF_UP))
+		assertEquals(KBigDecimal("22.6244499"), KBigDecimal("909140873.6147215").divide(KBigDecimal("40183999.0187007"), HALF_EVEN))
+		assertEquals(KBigDecimal("1.7820177"), KBigDecimal("1298872479.0962298").divide(KBigDecimal("728877430.1486664"), HALF_UP))
+		assertEquals(KBigDecimal("-0.33476561"), KBigDecimal("18147998.73683848").divide(KBigDecimal("-54211060.0672527"), HALF_UP))
+		assertEquals(KBigDecimal("0.46328125"), KBigDecimal("-254964721.59129804").divide(KBigDecimal("-550345435.2300467"), FLOOR))
+		assertEquals(KBigDecimal("1.06437206"), KBigDecimal("-294148612.06468046").divide(KBigDecimal("-276358823.690559"), FLOOR))
+		assertEquals(KBigDecimal("-1.4676572"), KBigDecimal("-292353598.6409018").divide(KBigDecimal("199197463.1572587"), HALF_UP))
+		assertEquals(KBigDecimal("-5.1666804"), KBigDecimal("778374847.6050745").divide(KBigDecimal("-150652795.90001202"), UP))
+		assertEquals(KBigDecimal("-0.3961430"), KBigDecimal("-571228995.7521011").divide(KBigDecimal("1441976860.8424008"), HALF_EVEN))
+		assertEquals(KBigDecimal("-3.1837349"), KBigDecimal("-235813042.5722397").divide(KBigDecimal("74068051.56425187"), HALF_UP))
 	}
 
 	@Test fun `test divide with math context`() {
-		assertEquals(KBigDecimal("-0.161586"), KBigDecimal("67292179.71385333").divide(KBigDecimal("-416447777.4133185"), KMathContext(6, HALF_EVEN)))
-		assertEquals(KBigDecimal("-0.677715"), KBigDecimal("-785212155.7348468").divide(KBigDecimal("1158616935.3838212"), KMathContext(6, DOWN)))
-		assertEquals(KBigDecimal("-1.1145"), KBigDecimal("-1160812480.4163346").divide(KBigDecimal("1041558883.1254534"), KMathContext(5, UP)))
-		assertEquals(KBigDecimal("0.091638"), KBigDecimal("-28852079.859152712").divide(KBigDecimal("-314848860.1390203"), KMathContext(5, HALF_UP)))
-		assertEquals(KBigDecimal("-0.0967808861"), KBigDecimal("-33341244.8754943").divide(KBigDecimal("344502372.5551315"), KMathContext(9, HALF_DOWN)))
+		assertEquals(KBigDecimal("-0.161587"), KBigDecimal("67292179.71385333").divide(KBigDecimal("-416447777.4133185"), KMathContext(6, UP)))
+		assertEquals(KBigDecimal("-0.677716"), KBigDecimal("-785212155.7348468").divide(KBigDecimal("1158616935.3838212"), KMathContext(6, UP)))
+		assertEquals(KBigDecimal("-1.1145"), KBigDecimal("-1160812480.4163346").divide(KBigDecimal("1041558883.1254534"), KMathContext(5, HALF_EVEN)))
+		assertEquals(KBigDecimal("0.091638"), KBigDecimal("-28852079.859152712").divide(KBigDecimal("-314848860.1390203"), KMathContext(5, HALF_EVEN)))
+		assertEquals(KBigDecimal("-0.0967808861"), KBigDecimal("-33341244.8754943").divide(KBigDecimal("344502372.5551315"), KMathContext(9, UP)))
 		assertEquals(KBigDecimal("0.511"), KBigDecimal("152796620.5265021").divide(KBigDecimal("299086193.5363742"), KMathContext(3, HALF_EVEN)))
-		assertEquals(KBigDecimal("0.322690112"), KBigDecimal("251835260.28429908").divide(KBigDecimal("780424471.6630119"), KMathContext(9, FLOOR)))
-		assertEquals(KBigDecimal("0.60429"), KBigDecimal("321943312.85114264").divide(KBigDecimal("532764659.1024282"), KMathContext(5, HALF_DOWN)))
-		assertEquals(KBigDecimal("-2.5"), KBigDecimal("1598230603.4288957").divide(KBigDecimal("-640537007.7833391"), KMathContext(2, HALF_UP)))
+		assertEquals(KBigDecimal("0.322690112"), KBigDecimal("251835260.28429908").divide(KBigDecimal("780424471.6630119"), KMathContext(9, DOWN)))
+		assertEquals(KBigDecimal("0.60429"), KBigDecimal("321943312.85114264").divide(KBigDecimal("532764659.1024282"), KMathContext(5, HALF_EVEN)))
+		assertEquals(KBigDecimal("-2.4"), KBigDecimal("1598230603.4288957").divide(KBigDecimal("-640537007.7833391"), KMathContext(2, CEILING)))
 		assertEquals(KBigDecimal("-0.66367"), KBigDecimal("28655590.948701665").divide(KBigDecimal("-43176888.62237175"), KMathContext(5, DOWN)))
-		assertEquals(KBigDecimal("0.57"), KBigDecimal("-740028390.0913398").divide(KBigDecimal("-1298525333.7510824"), KMathContext(2, CEILING)))
+		assertEquals(KBigDecimal("0.56"), KBigDecimal("-740028390.0913398").divide(KBigDecimal("-1298525333.7510824"), KMathContext(2, FLOOR)))
 	}
 
 	@Test fun `test divideAndRemainder`() {
@@ -135,16 +135,44 @@ class KBigDecimalTest {
 
 	@Test fun `test divideAndRemainder with math context`() {
 		assertEquals(listOf(KBigDecimal("0.0"), KBigDecimal("42717969.40366649")), KBigDecimal("42717969.40366649").divideAndRemainder(KBigDecimal("-1590727659.9535892"), KMathContext(3, HALF_DOWN)).asList())
-		assertEquals(listOf(KBigDecimal("0.0"), KBigDecimal("-324530096.98066115")), KBigDecimal("-324530096.98066115").divideAndRemainder(KBigDecimal("447661384.4024426"), KMathContext(5, DOWN)).asList())
+		assertEquals(listOf(KBigDecimal("0.0"), KBigDecimal("-324530096.98066115")), KBigDecimal("-324530096.98066115").divideAndRemainder(KBigDecimal("447661384.4024426"), KMathContext(5, FLOOR)).asList())
 		assertEquals(listOf(KBigDecimal("0.00"), KBigDecimal("25553502.832766782")), KBigDecimal("25553502.832766782").divideAndRemainder(KBigDecimal("648425442.8635095"), KMathContext(1, CEILING)).asList())
-		assertEquals(listOf(KBigDecimal("-1.0"), KBigDecimal("-427926592.8390291")), KBigDecimal("-1007909352.8882061").divideAndRemainder(KBigDecimal("579982760.049177"), KMathContext(5, HALF_UP)).asList())
-		assertEquals(listOf(KBigDecimal("0.0"), KBigDecimal("212299470.94247726")), KBigDecimal("212299470.94247726").divideAndRemainder(KBigDecimal("1018749155.5705159"), KMathContext(7, HALF_UP)).asList())
+		assertEquals(listOf(KBigDecimal("-1.0"), KBigDecimal("-427926592.8390291")), KBigDecimal("-1007909352.8882061").divideAndRemainder(KBigDecimal("579982760.049177"), KMathContext(5, HALF_EVEN)).asList())
+		assertEquals(listOf(KBigDecimal("0.0"), KBigDecimal("212299470.94247726")), KBigDecimal("212299470.94247726").divideAndRemainder(KBigDecimal("1018749155.5705159"), KMathContext(7, DOWN)).asList())
 		assertEquals(listOf(KBigDecimal("0"), KBigDecimal("185739914.30591717")), KBigDecimal("185739914.30591717").divideAndRemainder(KBigDecimal("454240870.06959987"), KMathContext(4, DOWN)).asList())
-		assertEquals(listOf(KBigDecimal("2"), KBigDecimal("-75753770.2429225")), KBigDecimal("-829736041.1504835").divideAndRemainder(KBigDecimal("-376991135.4537805"), KMathContext(2, FLOOR)).asList())
-		assertEquals(listOf(KBigDecimal("-4"), KBigDecimal("-204400783.88747332")), KBigDecimal("-1498939511.9978392").divideAndRemainder(KBigDecimal("323634682.02759147"), KMathContext(5, HALF_DOWN)).asList())
+		assertEquals(listOf(KBigDecimal("2"), KBigDecimal("-75753770.2429225")), KBigDecimal("-829736041.1504835").divideAndRemainder(KBigDecimal("-376991135.4537805"), KMathContext(2, UP)).asList())
+		assertEquals(listOf(KBigDecimal("-4"), KBigDecimal("-204400783.88747332")), KBigDecimal("-1498939511.9978392").divideAndRemainder(KBigDecimal("323634682.02759147"), KMathContext(5, DOWN)).asList())
 		assertEquals(listOf(KBigDecimal("-7"), KBigDecimal("154209408.17746801")), KBigDecimal("1464574829.3096583").divideAndRemainder(KBigDecimal("-187195060.16174147"), KMathContext(7, UP)).asList())
-		assertEquals(listOf(KBigDecimal("0.0"), KBigDecimal("-120187432.93513387")), KBigDecimal("-120187432.93513387").divideAndRemainder(KBigDecimal("1672685224.8150556"), KMathContext(8, HALF_DOWN)).asList())
-		assertEquals(listOf(KBigDecimal("2"), KBigDecimal("151577208.2079671")), KBigDecimal("1446128993.4640043").divideAndRemainder(KBigDecimal("647275892.6280186"), KMathContext(5, UP)).asList())
+		assertEquals(listOf(KBigDecimal("0.0"), KBigDecimal("-120187432.93513387")), KBigDecimal("-120187432.93513387").divideAndRemainder(KBigDecimal("1672685224.8150556"), KMathContext(8, UP)).asList())
+		assertEquals(listOf(KBigDecimal("2"), KBigDecimal("151577208.2079671")), KBigDecimal("1446128993.4640043").divideAndRemainder(KBigDecimal("647275892.6280186"), KMathContext(5, HALF_EVEN)).asList())
+	}
+
+	@Test fun `test divideToIntegralValue`() {
+		assertEquals(KBigDecimal("-2"), KBigDecimal("784102538.4058294").divideToIntegralValue(KBigDecimal("-312845952.79308087")))
+		assertEquals(KBigDecimal("-2"), KBigDecimal("365965834.8138188").divideToIntegralValue(KBigDecimal("-153685584.27716056")))
+		assertEquals(KBigDecimal("-6"), KBigDecimal("-1309812580.3667805").divideToIntegralValue(KBigDecimal("204382596.25089645")))
+		assertEquals(KBigDecimal("0.0"), KBigDecimal("90239497.67196426").divideToIntegralValue(KBigDecimal("999477561.0824475")))
+		assertEquals(KBigDecimal("9"), KBigDecimal("312427903.48579687").divideToIntegralValue(KBigDecimal("32145267.92746859")))
+		assertEquals(KBigDecimal("-5"), KBigDecimal("467302324.9134836").divideToIntegralValue(KBigDecimal("-92805287.45404696")))
+		assertEquals(KBigDecimal("0.0"), KBigDecimal("-777742187.4544085").divideToIntegralValue(KBigDecimal("794629113.271847")))
+		assertEquals(KBigDecimal("-1"), KBigDecimal("-187774338.1068777").divideToIntegralValue(KBigDecimal("184127214.49721962")))
+		assertEquals(KBigDecimal("0.00"), KBigDecimal("104016565.31400327").divideToIntegralValue(KBigDecimal("1272931911.694565")))
+		assertEquals(KBigDecimal("5"), KBigDecimal("-799118863.4963624").divideToIntegralValue(KBigDecimal("-140063310.9501388")))
+		assertEquals(KBigDecimal("-1.0"), KBigDecimal("471057104.25907904").divideToIntegralValue(KBigDecimal("-414893188.7499126")))
+	}
+
+	@Test fun `test divideToIntegralValue with math context`() {
+		assertEquals(KBigDecimal("0.0"), KBigDecimal("91702153.45007044").divideToIntegralValue(KBigDecimal("-709061441.3675947"), KMathContext(8, DOWN)))
+		assertEquals(KBigDecimal("-1"), KBigDecimal("249841354.43697646").divideToIntegralValue(KBigDecimal("-182726748.76372012"), KMathContext(5, HALF_UP)))
+		assertEquals(KBigDecimal("1"), KBigDecimal("890471624.3624302").divideToIntegralValue(KBigDecimal("814179731.8786556"), KMathContext(7, DOWN)))
+		assertEquals(KBigDecimal("1"), KBigDecimal("-212775941.3541713").divideToIntegralValue(KBigDecimal("-188571704.9722901"), KMathContext(3, HALF_EVEN)))
+		assertEquals(KBigDecimal("0.00"), KBigDecimal("124875163.09732443").divideToIntegralValue(KBigDecimal("-1079043613.873884"), KMathContext(3, HALF_UP)))
+		assertEquals(KBigDecimal("9"), KBigDecimal("-764171538.7885159").divideToIntegralValue(KBigDecimal("-80169218.02207339"), KMathContext(7, CEILING)))
+		assertEquals(KBigDecimal("0.0"), KBigDecimal("124773245.69994995").divideToIntegralValue(KBigDecimal("-1194771990.4861174"), KMathContext(8, HALF_DOWN)))
+		assertEquals(KBigDecimal("0E+1"), KBigDecimal("-93602301.2782669").divideToIntegralValue(KBigDecimal("-116901767.36363001"), KMathContext(1, HALF_DOWN)))
+		assertEquals(KBigDecimal("-7"), KBigDecimal("610607180.0892429").divideToIntegralValue(KBigDecimal("-81795581.14152132"), KMathContext(1, HALF_EVEN)))
+		assertEquals(KBigDecimal("-1"), KBigDecimal("341559423.7394248").divideToIntegralValue(KBigDecimal("-280140622.5574952"), KMathContext(9, HALF_DOWN)))
+		assertEquals(KBigDecimal("1"), KBigDecimal("-47260343.89308903").divideToIntegralValue(KBigDecimal("-25204377.979744814"), KMathContext(8, FLOOR)))
 	}
 
 
