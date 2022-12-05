@@ -51,10 +51,12 @@ actual class KBigDecimal private constructor(private val delegate: ComPapacekbKb
         )
     }
 
-    actual fun divideToIntegralValue(n: KBigDecimal): KBigDecimal = KBigDecimal(n.delegate.divideToIntegralValueWithComPapacekbKbignumJBigDecimal(n.delegate)!!)
+    actual fun divideToIntegralValue(n: KBigDecimal): KBigDecimal = KBigDecimal(
+        delegate.divideToIntegralValueWithComPapacekbKbignumJBigDecimal(n.delegate)!!
+    )
 
     actual fun divideToIntegralValue(n: KBigDecimal, mc: KMathContext): KBigDecimal =
-        KBigDecimal(n.delegate.divideToIntegralValueWithComPapacekbKbignumJBigDecimal(n.delegate, mc.toMathContext())!!)
+        KBigDecimal(delegate.divideToIntegralValueWithComPapacekbKbignumJBigDecimal(n.delegate, mc.toMathContext())!!)
 
     actual fun doubleValue(): Double = this.delegate.doubleValue()
 
