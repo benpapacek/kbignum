@@ -88,7 +88,7 @@ expect class KBigDecimal(value: String) {
 
     fun signum(): Int
 
-    fun stripTrailingZeroes(): KBigDecimal
+    fun stripTrailingZeros(): KBigDecimal
 
     fun subtract(n: KBigDecimal): KBigDecimal
 

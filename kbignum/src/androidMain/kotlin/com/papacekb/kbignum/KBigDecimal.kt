@@ -96,7 +96,7 @@ actual class KBigDecimal private constructor(private val delegate: java.math.Big
 
     actual fun signum(): Int = delegate.signum()
 
-    actual fun stripTrailingZeroes(): KBigDecimal = KBigDecimal(delegate.stripTrailingZeros())
+    actual fun stripTrailingZeros(): KBigDecimal = KBigDecimal(delegate.stripTrailingZeros())
 
     actual fun subtract(n: KBigDecimal): KBigDecimal = KBigDecimal(delegate.subtract(n.delegate))
 

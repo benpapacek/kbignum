@@ -118,7 +118,7 @@ actual class KBigDecimal private constructor(private val delegate: ComPapacekbKb
 
     actual fun signum(): Int = delegate.signum()
 
-    actual fun stripTrailingZeroes(): KBigDecimal = KBigDecimal(delegate.stripTrailingZeroes()!!)
+    actual fun stripTrailingZeros(): KBigDecimal = KBigDecimal(delegate.stripTrailingZeroes()!!)
 
     actual fun subtract(n: KBigDecimal) = KBigDecimal(this.delegate.subtractWithComPapacekbKbignumJBigDecimal(n.delegate)!!)
 
