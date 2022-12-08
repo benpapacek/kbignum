@@ -10,23 +10,17 @@ import java.math.RoundingMode
 import kotlin.random.Random
 import kotlin.random.asJavaRandom
 
-class JBigIntegerTestWriter {
+class KBigIntegerTestWriter {
 
     private val random = Random(42)
 
     private fun randomBigInteger() = BigInteger.valueOf(random.nextLong())
 
-    private fun randomRoundingMode() = RoundingMode.values().filterNot { it == RoundingMode.UNNECESSARY }.random()
-
-    private fun randomMathContext() = MathContext(random.nextInt(1, 10), randomRoundingMode())
-
-    private fun wrap(n: BigDecimal) = "KBigDecimal(\"$n\")"
     private fun wrapBI(n: BigInteger) = "KBigInteger(\"$n\")"
-    private fun wrapMC(mc: MathContext) = "KMathContext(${mc.precision}, ${mc.roundingMode})"
 
     @Ignore("This is not a test per se, but a way of generating kmm tests which compare results with those of corresponding java classes")
     @Test
-    fun createJBigDecimalTest() {
+    fun createKBigIntegerTest() {
         val file = File("../kbignum/src/commonTest/kotlin/com/papacekb/kbignum/KBigIntegerTest.kt")
 
         file.printWriter().use { out ->
