@@ -1,5 +1,6 @@
 package com.papacekb.kbignum
 
+import org.junit.Ignore
 import org.junit.Test
 import java.io.File
 import java.math.BigDecimal
@@ -23,7 +24,7 @@ class JBigIntegerTestWriter {
     private fun wrapBI(n: BigInteger) = "KBigInteger(\"$n\")"
     private fun wrapMC(mc: MathContext) = "KMathContext(${mc.precision}, ${mc.roundingMode})"
 
-//    @Ignore("This is not a test per se, but a way of generating kmm tests which compare results with those of corresponding java classes")
+    @Ignore("This is not a test per se, but a way of generating kmm tests which compare results with those of corresponding java classes")
     @Test
     fun createJBigDecimalTest() {
         val file = File("../kbignum/src/commonTest/kotlin/com/papacekb/kbignum/KBigIntegerTest.kt")
@@ -329,14 +330,9 @@ class JBigIntegerTestWriter {
 
     }
 
-    private fun ByteArray.hex() = joinToString("") { "%02x".format(it) }
+    @OptIn(ExperimentalUnsignedTypes::class)
+    fun ByteArray.hex(): String = asUByteArray().joinToString("") { it.toString(radix = 16).padStart(2, '0') }
 }
-
-/*
-    fun toByteArray(): ByteArray
-
-    fun xor(n: KBigInteger): KBigInteger
- */
 
 private const val HEADER = """
 package com.papacekb.kbignum
@@ -345,7 +341,8 @@ import com.papacekb.kbignum.KRoundingMode.*
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
-private fun ByteArray.hex() = joinToString("") { "%02x".format(it) }
+@OptIn(ExperimentalUnsignedTypes::class)
+fun ByteArray.hex(): String = asUByteArray().joinToString("") { it.toString(radix = 16).padStart(2, '0') }
 
 class KBigIntegerTest {
 """

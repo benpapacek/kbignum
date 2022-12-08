@@ -5,7 +5,8 @@ import com.papacekb.kbignum.KRoundingMode.*
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
-private fun ByteArray.hex() = joinToString("") { "%02x".format(it) }
+@OptIn(ExperimentalUnsignedTypes::class)
+fun ByteArray.hex(): String = asUByteArray().joinToString("") { it.toString(radix = 16).padStart(2, '0') }
 
 class KBigIntegerTest {
 
