@@ -347,7 +347,6 @@ class JBigDecimalTestWriter {
             out.println("\t@Test fun `test scale`() {")
             (0..10).forEach { _ ->
                 val a = randomBigDecimal()
-                val mc = randomMathContext()
                 out.println("\t\tassertEquals(${a.scale()}, ${wrap(a)}.scale())")
             }
             out.println("\t}\n")
@@ -480,14 +479,7 @@ class JBigDecimalTestWriter {
 }
 
 
-/*
-
-    fun ulp(): KBigDecimal
-
-    fun unscaledValue(): KBigInteger
- */
-
-const val HEADER = """
+private const val HEADER = """
 package com.papacekb.kbignum
 
 import com.papacekb.kbignum.KRoundingMode.*
