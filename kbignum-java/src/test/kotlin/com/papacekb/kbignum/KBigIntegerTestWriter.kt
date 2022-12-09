@@ -3,10 +3,7 @@ package com.papacekb.kbignum
 import org.junit.Ignore
 import org.junit.Test
 import java.io.File
-import java.math.BigDecimal
 import java.math.BigInteger
-import java.math.MathContext
-import java.math.RoundingMode
 import kotlin.random.Random
 import kotlin.random.asJavaRandom
 
