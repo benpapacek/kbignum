@@ -12,7 +12,7 @@ As far as possible, KBigInteger and KBigDecimal are identical to their java coun
 * iosArm64
 * iosSimulatorArm64
 
-#Build
+## Build
 
 This project builds for iOS, so can only be built on OSX with Xcode tools installed.
 Clone the [J2ObjC project](https://github.com/google/j2objc) to the same directory the project is in, then follow [these instructions](https://developers.google.com/j2objc/guides/building-j2objc) to build it.
