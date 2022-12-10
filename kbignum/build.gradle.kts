@@ -29,11 +29,11 @@ kotlin {
                 defFile("$projectDir/src/iosMain/cinterop/iosSimulatorArm64.def")
                 includeDirs(
                     "$projectDir/src/iosMain/objc/src/com/papacekb/kbignum/",
-                    "$projectDir/../j2objc/include"
+                    "$projectDir/../../j2objc/dist/include"
                 )
                 extraOpts(
                     "-libraryPath", "$projectDir/src/iosMain/objc",
-                    "-libraryPath", "$projectDir/../j2objc/lib/simulator"
+                    "-libraryPath", "$projectDir/../../j2objc/dist/lib/simulator"
                 )
             }
         }
@@ -45,11 +45,11 @@ kotlin {
                 defFile("$projectDir/src/iosMain/cinterop/iosArm64.def")
                 includeDirs(
                     "$projectDir/src/iosMain/objc/src/com/papacekb/kbignum/",
-                    "$projectDir/../j2objc/include"
+                    "$projectDir/../../j2objc/dist/include"
                 )
                 extraOpts(
                     "-libraryPath", "$projectDir/src/iosMain/objc",
-                    "-libraryPath", "$projectDir/../j2objc/lib/iphone"
+                    "-libraryPath", "$projectDir/../../j2objc/dist/lib/iphone"
                 )
             }
         }
@@ -61,17 +61,15 @@ kotlin {
                 defFile("$projectDir/src/iosMain/cinterop/iosX64.def")
                 includeDirs(
                     "$projectDir/src/iosMain/objc/src/com/papacekb/kbignum/",
-                    "$projectDir/../j2objc/include"
+                    "$projectDir/../../j2objc/dist/include"
                 )
                 extraOpts(
                     "-libraryPath", "$projectDir/src/iosMain/objc",
-                    "-libraryPath", "$projectDir/../j2objc/lib/simulator"
+                    "-libraryPath", "$projectDir/../../j2objc/dist/lib/simulator"
                 )
             }
         }
     }
-
-
 
     sourceSets {
         val commonMain by getting
