@@ -1,0 +1,5 @@
+language = Objective-C
+headers = JBigDecimal.h JBigInteger.h JByteArray.h JMathContext.h
+package = javaObjc
+linkerOpts = -l iconv -l z -framework Security -framework UIKit
+staticLibraries = libKbignum-iosX64.a libjre_core.a

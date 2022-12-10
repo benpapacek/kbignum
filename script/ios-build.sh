@@ -30,10 +30,14 @@ xcodebuild -project kbignum.xcodeproj -target kbignum -sdk iphonesimulator -arch
 xcodebuild -project kbignum.xcodeproj -target kbignum -sdk iphoneos -arch arm64 \
   "PRODUCT_NAME=Kbignum-iosArm64"
 
+xcodebuild -project kbignum.xcodeproj -target kbignum -sdk iphonesimulator -arch x86_64 \
+  "PRODUCT_NAME=Kbignum-iosX64"
+
 rsync -a --prune-empty-dirs --include '*/' --include '*.h' --exclude '*' './src' './dist'
 
 cp -f 'build/libKbignum-iosSimulatorArm64.a' ./dist
 cp -f 'build/libKbignum-iosArm64.a' ./dist
+cp -f 'build/libKbignum-iosX64.a' ./dist
 
 TARGET_DIR="$ROOT_DIR/kbignum/src/iosMain/objc"
 rm -rf $TARGET_DIR

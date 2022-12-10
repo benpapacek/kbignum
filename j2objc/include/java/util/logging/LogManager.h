@@ -305,7 +305,7 @@
   (such as J2EE containers) can subclass the object.
  It is non-public as
   it is intended that there only be one LogManager object, whose value is
-  retrieved by calling Logmanager.getLogManager.
+  retrieved by calling LogManager.getLogManager.
  */
 - (instancetype __nonnull)init;
 

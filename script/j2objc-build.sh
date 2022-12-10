@@ -13,7 +13,7 @@ cd $J2OBJC_DIR
 # change as appropriate
 export PROTOBUF_ROOT_DIR=/opt/homebrew/Cellar/protobuf/21.9_1
 
-export J2OBJC_ARCHS="iphone64 simulator64"
+export J2OBJC_ARCHS="iphone64 simulator64 simulator"
 
 make clean && make -j8 all_dist
 

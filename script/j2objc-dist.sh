@@ -12,13 +12,16 @@ rm -rf ./j2objc
 mkdir -p ./j2objc/include/java/
 mkdir -p ./j2objc/lib/simulator
 mkdir -p ./j2objc/lib/iphone
+#mkdir -p ./j2objc/lib/macosx
 
 cp $J2OBJC_DIST_DIR/include/*.h ./j2objc/include/
 cp -r $J2OBJC_DIST_DIR/include/java/lang ./j2objc/include/java/lang
 cp -r $J2OBJC_DIST_DIR/include/java/math ./j2objc/include/java/math
 cp -r $J2OBJC_DIST_DIR/include/java/util ./j2objc/include/java/util
+
 cp $J2OBJC_DIST_DIR/lib/simulator/libjre_core.a ./j2objc/lib/simulator/
 cp $J2OBJC_DIST_DIR/lib/iphone/libjre_core.a ./j2objc/lib/iphone/
+#cp $J2OBJC_DIST_DIR/lib/macosx/libjre_core.a ./j2objc/lib/macosx/
 
 echo
 echo "DONE"
