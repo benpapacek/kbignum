@@ -15,7 +15,7 @@ class KBigIntegerTestWriter {
 
     private fun wrapBI(n: BigInteger) = "KBigInteger(\"$n\")"
 
-    @Ignore("This is not a test per se, but a way of generating kmm tests which compare results with those of corresponding java classes")
+//    @Ignore("This is not a test per se, but a way of generating kmm tests which compare results with those of corresponding java classes")
     @Test
     fun createKBigIntegerTest() {
         val file = File("../kbignum/src/commonTest/kotlin/com/papacekb/kbignum/KBigIntegerTest.kt")
@@ -314,6 +314,37 @@ class KBigIntegerTestWriter {
             }
             out.println("\t}\n")
 
+            out.println("\t@Test fun `test operator minus`() {")
+            (1.. 10).forEach { _ ->
+                val a = randomBigInteger()
+                val b = randomBigInteger()
+                out.println("\t\tassertEquals(${wrapBI(a - b)}, ${wrapBI(a)} - ${wrapBI(b)})")
+            }
+            out.println("\t}\n")
+
+            out.println("\t@Test fun `test operator plus`() {")
+            (1.. 10).forEach { _ ->
+                val a = randomBigInteger()
+                val b = randomBigInteger()
+                out.println("\t\tassertEquals(${wrapBI(a + b)}, ${wrapBI(a)} + ${wrapBI(b)})")
+            }
+            out.println("\t}\n")
+
+            out.println("\t@Test fun `test operator times`() {")
+            (1.. 10).forEach { _ ->
+                val a = randomBigInteger()
+                val b = randomBigInteger()
+                out.println("\t\tassertEquals(${wrapBI(a * b)}, ${wrapBI(a)} * ${wrapBI(b)})")
+            }
+            out.println("\t}\n")
+
+            out.println("\t@Test fun `test operator divide`() {")
+            (1.. 10).forEach { _ ->
+                val a = randomBigInteger()
+                val b = randomBigInteger()
+                out.println("\t\tassertEquals(${wrapBI(a / b)}, ${wrapBI(a)} / ${wrapBI(b)})")
+            }
+            out.println("\t}\n")
 
             out.println("\n}")
         }

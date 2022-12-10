@@ -2,6 +2,13 @@ package com.papacekb.kbignum
 
 expect class KBigInteger(value: String, radix: Int = 10) {
 
+    companion object {
+        val ONE: KBigInteger
+        val TEN: KBigInteger
+        val ZERO: KBigInteger
+        fun valueOf(n: Long): KBigInteger
+    }
+
     constructor(value: Long)
 
     fun abs(): KBigInteger
@@ -77,6 +84,14 @@ expect class KBigInteger(value: String, radix: Int = 10) {
     fun toByteArray(): ByteArray
 
     fun xor(n: KBigInteger): KBigInteger
+
+    operator fun plus(n: KBigInteger): KBigInteger
+
+    operator fun minus(n: KBigInteger): KBigInteger
+
+    operator fun times(n: KBigInteger): KBigInteger
+
+    operator fun div(n: KBigInteger): KBigInteger
 
     operator fun compareTo(other: KBigInteger): Int
 

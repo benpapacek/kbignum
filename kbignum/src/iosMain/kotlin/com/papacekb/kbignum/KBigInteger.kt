@@ -3,6 +3,13 @@ import javaObjc.ComPapacekbKbignumJBigInteger
 
 actual class KBigInteger constructor(private val delegate: ComPapacekbKbignumJBigInteger) {
 
+    actual companion object {
+        actual val ONE: KBigInteger = KBigInteger(1)
+        actual val TEN: KBigInteger = KBigInteger(10)
+        actual val ZERO: KBigInteger = KBigInteger(0)
+        actual fun valueOf(n: Long): KBigInteger = KBigInteger(n)
+    }
+
     actual constructor(value: String, radix: Int): this(ComPapacekbKbignumJBigInteger(value, radix))
 
     actual constructor(value: Long): this(ComPapacekbKbignumJBigInteger(value))
@@ -93,6 +100,14 @@ actual class KBigInteger constructor(private val delegate: ComPapacekbKbignumJBi
     }
 
     actual fun xor(n: KBigInteger): KBigInteger = KBigInteger(delegate.xor__WithComPapacekbKbignumJBigInteger(n.delegate)!!)
+
+    actual operator fun plus(n: KBigInteger): KBigInteger = add(n)
+
+    actual operator fun minus(n: KBigInteger): KBigInteger = subtract(n)
+
+    actual operator fun times(n: KBigInteger): KBigInteger = multiply(n)
+
+    actual operator fun div(n: KBigInteger): KBigInteger = divide(n)
 
     actual operator fun compareTo(other: KBigInteger): Int = delegate.compareToWithId(other.delegate)
 

@@ -2,6 +2,13 @@ package com.papacekb.kbignum
 
 actual class KBigInteger constructor(private val delegate: java.math.BigInteger) {
 
+    actual companion object {
+        actual val ONE: KBigInteger = KBigInteger(1)
+        actual val TEN: KBigInteger = KBigInteger(10)
+        actual val ZERO: KBigInteger = KBigInteger(0)
+        actual fun valueOf(n: Long): KBigInteger = KBigInteger(n)
+    }
+
     actual constructor(value: String, radix: Int): this(java.math.BigInteger(value, radix))
 
     actual constructor(value: Long): this(java.math.BigInteger.valueOf(value))
@@ -79,6 +86,14 @@ actual class KBigInteger constructor(private val delegate: java.math.BigInteger)
     actual fun toByteArray(): ByteArray = delegate.toByteArray()
 
     actual fun xor(n: KBigInteger): KBigInteger = KBigInteger(delegate.xor(n.delegate))
+
+    actual operator fun plus(n: KBigInteger): KBigInteger = add(n)
+
+    actual operator fun minus(n: KBigInteger): KBigInteger = subtract(n)
+
+    actual operator fun times(n: KBigInteger): KBigInteger = multiply(n)
+
+    actual operator fun div(n: KBigInteger): KBigInteger = divide(n)
 
     actual operator fun compareTo(other: KBigInteger): Int = delegate.compareTo(other.delegate)
 
