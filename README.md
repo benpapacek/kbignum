@@ -8,6 +8,7 @@ As far as possible, KBigInteger and KBigDecimal are interchangeable with their j
 
 * jvm
 * android
+* iosX64
 * iosArm64
 * iosSimulatorArm64
 
