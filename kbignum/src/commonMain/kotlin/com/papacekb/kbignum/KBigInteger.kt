@@ -1,6 +1,6 @@
 package com.papacekb.kbignum
 
-expect class KBigInteger(value: String) {
+expect class KBigInteger(value: String, radix: Int = 10) {
 
     constructor(value: Long)
 

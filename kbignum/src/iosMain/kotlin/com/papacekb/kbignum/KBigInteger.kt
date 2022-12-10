@@ -3,7 +3,7 @@ import javaObjc.ComPapacekbKbignumJBigInteger
 
 actual class KBigInteger constructor(private val delegate: ComPapacekbKbignumJBigInteger) {
 
-    actual constructor(value: String): this(ComPapacekbKbignumJBigInteger(value))
+    actual constructor(value: String, radix: Int): this(ComPapacekbKbignumJBigInteger(value, radix))
 
     actual constructor(value: Long): this(ComPapacekbKbignumJBigInteger(value))
 

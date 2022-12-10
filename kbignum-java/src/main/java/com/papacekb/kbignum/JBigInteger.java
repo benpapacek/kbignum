@@ -16,8 +16,8 @@ public class JBigInteger implements Comparable<JBigInteger> {
         this.delegate = delegate;
     }
 
-    public JBigInteger(String value) {
-        delegate = new java.math.BigInteger(value);
+    public JBigInteger(String value, int radix) {
+        delegate = new java.math.BigInteger(value, radix);
     }
 
     public JBigInteger(long value) {

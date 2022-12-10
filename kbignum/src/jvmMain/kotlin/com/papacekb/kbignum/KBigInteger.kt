@@ -2,7 +2,7 @@ package com.papacekb.kbignum
 
 actual class KBigInteger constructor(private val delegate: java.math.BigInteger) {
 
-    actual constructor(value: String): this(java.math.BigInteger(value))
+    actual constructor(value: String, radix: Int): this(java.math.BigInteger(value, radix))
 
     actual constructor(value: Long): this(java.math.BigInteger.valueOf(value))
 
