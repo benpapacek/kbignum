@@ -14,9 +14,7 @@ class KBigDecimalTestWriter {
     private val random = Random(42)
 
     private fun randomBigDecimal() = BigDecimal.valueOf(random.nextInt() * random.nextDouble())
-
     private fun randomRoundingMode() = RoundingMode.values().filterNot { it == RoundingMode.UNNECESSARY }.random()
-
     private fun randomMathContext() = MathContext(random.nextInt(1, 10), randomRoundingMode())
 
     private fun wrapBD(n: BigDecimal) = "KBigDecimal(\"$n\")"
@@ -40,7 +38,6 @@ class KBigDecimalTestWriter {
             }
             out.println("\t}\n")
 
-
             out.println("\t@Test fun `test add`() {")
             (1..10).forEach { _ ->
                 val a = randomBigDecimal()
@@ -49,7 +46,6 @@ class KBigDecimalTestWriter {
                 out.println("\t\tassertEquals(${wrapBD(n)}, ${wrapBD(a)}.add(${wrapBD(b)}))")
             }
             out.println("\t}\n")
-
 
             out.println("\t@Test fun `test add with MathContext`() {")
             (1..10).forEach { _ ->
@@ -61,14 +57,12 @@ class KBigDecimalTestWriter {
             }
             out.println("\t}\n")
 
-
             out.println("\t@Test fun `test byteValueExact`() {")
             (1..10).forEach { _ ->
                 val a = BigDecimal(random.nextInt(0, 127))
                 out.println("\t\tassertEquals(${a.byteValueExact()}, ${wrapBD(a)}.byteValueExact())")
             }
             out.println("\t}\n")
-
 
             out.println("\t@Test fun `test compareTo`() {")
             (1..10).forEach { _ ->
@@ -78,7 +72,6 @@ class KBigDecimalTestWriter {
             }
             out.println("\t}\n")
 
-
             out.println("\t@Test fun `test divide`() {")
             (1..10).forEach { _ ->
                 val a = BigDecimal(random.nextInt(2, 100))
@@ -86,7 +79,6 @@ class KBigDecimalTestWriter {
                 out.println("\t\tassertEquals(${wrapBD(b.divide(a))}, ${wrapBD(b)}.divide(${wrapBD(a)}))")
             }
             out.println("\t}\n")
-
 
             out.println("\t@Test fun `test divide with rounding mode`() {")
             (1..10).forEach { _ ->
@@ -96,7 +88,6 @@ class KBigDecimalTestWriter {
                 out.println("\t\tassertEquals(${wrapBD(a.divide(b, roundingMode))}, ${wrapBD(a)}.divide(${wrapBD(b)}, $roundingMode))")
             }
             out.println("\t}\n")
-
 
             out.println("\t@Test fun `test divide with MathContext`() {")
             (1..10).forEach { _ ->
@@ -108,7 +99,6 @@ class KBigDecimalTestWriter {
             }
             out.println("\t}\n")
 
-
             out.println("\t@Test fun `test divideAndRemainder`() {")
             (1..10).forEach { _ ->
                 val a = randomBigDecimal()
@@ -118,7 +108,6 @@ class KBigDecimalTestWriter {
                         "${wrapBD(a)}.divideAndRemainder(${wrapBD(b)}).asList())")
             }
             out.println("\t}\n")
-
 
             out.println("\t@Test fun `test divideAndRemainder with MathContext`() {")
             (1..10).forEach { _ ->
@@ -131,7 +120,6 @@ class KBigDecimalTestWriter {
             }
             out.println("\t}\n")
 
-
             out.println("\t@Test fun `test divideToIntegralValue`() {")
             (1..10).forEach { _ ->
                 val a = randomBigDecimal()
@@ -140,7 +128,6 @@ class KBigDecimalTestWriter {
                 out.println("\t\tassertEquals(${wrapBD(result)}, ${wrapBD(a)}.divideToIntegralValue(${wrapBD(b)}))")
             }
             out.println("\t}\n")
-
 
             out.println("\t@Test fun `test divideToIntegralValue with MathContext`() {")
             (1..10).forEach { _ ->
@@ -152,14 +139,12 @@ class KBigDecimalTestWriter {
             }
             out.println("\t}\n")
 
-
             out.println("\t@Test fun `test doubleValue`() {")
             (1..10).forEach { _ ->
                 val a = randomBigDecimal()
                 out.println("\t\tassertEquals(${a.toDouble()}, ${wrapBD(a)}.doubleValue())")
             }
             out.println("\t}\n")
-
 
             out.println("\t@Test fun `test floatValue`() {")
             (1..10).forEach { _ ->
@@ -168,14 +153,12 @@ class KBigDecimalTestWriter {
             }
             out.println("\t}\n")
 
-
             out.println("\t@Test fun `test intValue`() {")
             (1..10).forEach { _ ->
                 val a = randomBigDecimal()
                 out.println("\t\tassertEquals(${a.toInt()}, ${wrapBD(a)}.intValue())")
             }
             out.println("\t}\n")
-
 
             out.println("\t@Test fun `test intValueExact`() {")
             (1..10).forEach { _ ->
@@ -184,7 +167,6 @@ class KBigDecimalTestWriter {
             }
             out.println("\t}\n")
 
-
             out.println("\t@Test fun `test longValue`() {")
             (1..10).forEach { _ ->
                 val a = randomBigDecimal()
@@ -192,14 +174,12 @@ class KBigDecimalTestWriter {
             }
             out.println("\t}\n")
 
-
             out.println("\t@Test fun `test longValueExact`() {")
             (1..10).forEach { _ ->
                 val a = BigDecimal(random.nextLong())
                 out.println("\t\tassertEquals(${a.toLong()}, ${wrapBD(a)}.longValueExact())")
             }
             out.println("\t}\n")
-
 
             out.println("\t@Test fun `test max`() {")
             (1..10).forEach { _ ->
@@ -209,7 +189,6 @@ class KBigDecimalTestWriter {
             }
             out.println("\t}\n")
 
-
             out.println("\t@Test fun `test min`() {")
             (1..10).forEach { _ ->
                 val a = randomBigDecimal()
@@ -217,7 +196,6 @@ class KBigDecimalTestWriter {
                 out.println("\t\tassertEquals(${wrapBD(a.min(b))}, ${wrapBD(a)}.min(${wrapBD(b)}))")
             }
             out.println("\t}\n")
-
 
             out.println("\t@Test fun `test movePointLeft`() {")
             (1..10).forEach { _ ->
@@ -227,7 +205,6 @@ class KBigDecimalTestWriter {
             }
             out.println("\t}\n")
 
-
             out.println("\t@Test fun `test movePointRight`() {")
             (1..10).forEach { _ ->
                 val a = randomBigDecimal()
@@ -236,7 +213,6 @@ class KBigDecimalTestWriter {
             }
             out.println("\t}\n")
 
-
             out.println("\t@Test fun `test multiply`() {")
             (1..10).forEach { _ ->
                 val a = randomBigDecimal()
@@ -244,7 +220,6 @@ class KBigDecimalTestWriter {
                 out.println("\t\tassertEquals(${wrapBD(a.multiply(b))}, ${wrapBD(a)}.multiply(${wrapBD(b)}))")
             }
             out.println("\t}\n")
-
 
             out.println("\t@Test fun `test multiply with MathContext`() {")
             (1..10).forEach { _ ->
@@ -255,14 +230,12 @@ class KBigDecimalTestWriter {
             }
             out.println("\t}\n")
 
-
             out.println("\t@Test fun `test negate`() {")
             (1..10).forEach { _ ->
                 val a = randomBigDecimal()
                 out.println("\t\tassertEquals(${wrapBD(a.negate())}, ${wrapBD(a)}.negate())")
             }
             out.println("\t}\n")
-
 
             out.println("\t@Test fun `test negate with MathContext`() {")
             (1..10).forEach { _ ->
@@ -272,14 +245,12 @@ class KBigDecimalTestWriter {
             }
             out.println("\t}\n")
 
-
             out.println("\t@Test fun `test plus`() {")
             (1..10).forEach { _ ->
                 val a = randomBigDecimal()
                 out.println("\t\tassertEquals(${wrapBD(a.plus())}, ${wrapBD(a)}.plus())")
             }
             out.println("\t}\n")
-
 
             out.println("\t@Test fun `test plus with MathContext`() {")
             (1..10).forEach { _ ->
@@ -289,7 +260,6 @@ class KBigDecimalTestWriter {
             }
             out.println("\t}\n")
 
-
             out.println("\t@Test fun `test pow`() {")
             (1..10).forEach { _ ->
                 val a = randomBigDecimal()
@@ -297,7 +267,6 @@ class KBigDecimalTestWriter {
                 out.println("\t\tassertEquals(${wrapBD(a.pow(b))}, ${wrapBD(a)}.pow(${b}))")
             }
             out.println("\t}\n")
-
 
             out.println("\t@Test fun `test pow with MathContext`() {")
             (1..10).forEach { _ ->
@@ -308,14 +277,12 @@ class KBigDecimalTestWriter {
             }
             out.println("\t}\n")
 
-
             out.println("\t@Test fun `test precision`() {")
             (1..10).forEach { _ ->
                 val a = randomBigDecimal()
                 out.println("\t\tassertEquals(${a.precision()}, ${wrapBD(a)}.precision())")
             }
             out.println("\t}\n")
-
 
             out.println("\t@Test fun `test remainder`() {")
             (1..10).forEach { _ ->
@@ -324,7 +291,6 @@ class KBigDecimalTestWriter {
                 out.println("\t\tassertEquals(${wrapBD(a.remainder(b))}, ${wrapBD(a)}.remainder(${wrapBD(b)}))")
             }
             out.println("\t}\n")
-
 
             out.println("\t@Test fun `test remainder with MathContext`() {")
             (1..10).forEach { _ ->
@@ -335,7 +301,6 @@ class KBigDecimalTestWriter {
             }
             out.println("\t}\n")
 
-
             out.println("\t@Test fun `test round`() {")
             (1..10).forEach { _ ->
                 val a = randomBigDecimal()
@@ -344,14 +309,12 @@ class KBigDecimalTestWriter {
             }
             out.println("\t}\n")
 
-
             out.println("\t@Test fun `test scale`() {")
             (1..10).forEach { _ ->
                 val a = randomBigDecimal()
                 out.println("\t\tassertEquals(${a.scale()}, ${wrapBD(a)}.scale())")
             }
             out.println("\t}\n")
-
 
             out.println("\t@Test fun `test scaleByPowerOfTen`() {")
             (1..10).forEach { _ ->
@@ -361,15 +324,13 @@ class KBigDecimalTestWriter {
             }
             out.println("\t}\n")
 
-
             out.println("\t@Test fun `test setScale`() {")
             (1..10).forEach { _ ->
                 val a = randomBigDecimal()
-                val b = random.nextInt(6, 20)
+                val b = random.nextInt(10, 20)
                 out.println("\t\tassertEquals(${wrapBD(a.setScale(b))}, ${wrapBD(a)}.setScale($b))")
             }
             out.println("\t}\n")
-
 
             out.println("\t@Test fun `test setScale with RoundingMode`() {")
             (1..10).forEach { _ ->
@@ -388,14 +349,12 @@ class KBigDecimalTestWriter {
             }
             out.println("\t}\n")
 
-
             out.println("\t@Test fun `test signum`() {")
             (1..10).forEach { _ ->
                 val a = randomBigDecimal()
                 out.println("\t\tassertEquals(${a.signum()}, ${wrapBD(a)}.signum())")
             }
             out.println("\t}\n")
-
 
             out.println("\t@Test fun `test stripTrailingZeros`() {")
             (1..10).forEach { _ ->
@@ -404,7 +363,6 @@ class KBigDecimalTestWriter {
             }
             out.println("\t}\n")
 
-
             out.println("\t@Test fun `test subtract`() {")
             (1..10).forEach { _ ->
                 val a = randomBigDecimal()
@@ -412,7 +370,6 @@ class KBigDecimalTestWriter {
                 out.println("\t\tassertEquals(${wrapBD(a.subtract(b))}, ${wrapBD(a)}.subtract(${wrapBD(b)}))")
             }
             out.println("\t}\n")
-
 
             out.println("\t@Test fun `test subtract with MathContext`() {")
             (1..10).forEach { _ ->
@@ -423,14 +380,12 @@ class KBigDecimalTestWriter {
             }
             out.println("\t}\n")
 
-
             out.println("\t@Test fun `test toBigInteger`() {")
             (1..10).forEach { _ ->
                 val a = randomBigDecimal()
                 out.println("\t\tassertEquals(${wrapBI(a.toBigInteger())}, ${wrapBD(a)}.toBigInteger())")
             }
             out.println("\t}\n")
-
 
             out.println("\t@Test fun `test toBigIntegerExact`() {")
             (1..10).forEach { _ ->
@@ -439,14 +394,12 @@ class KBigDecimalTestWriter {
             }
             out.println("\t}\n")
 
-
             out.println("\t@Test fun `test toEngineeringString`() {")
             (1..10).forEach { _ ->
                 val a = randomBigDecimal()
                 out.println("\t\tassertEquals(\"${a.toEngineeringString()}\", ${wrapBD(a)}.toEngineeringString())")
             }
             out.println("\t}\n")
-
 
             out.println("\t@Test fun `test toPlainString`() {")
             (1..10).forEach { _ ->
@@ -455,7 +408,6 @@ class KBigDecimalTestWriter {
             }
             out.println("\t}\n")
 
-
             out.println("\t@Test fun `test ulp`() {")
             (1..10).forEach { _ ->
                 val a = randomBigDecimal()
@@ -463,11 +415,42 @@ class KBigDecimalTestWriter {
             }
             out.println("\t}\n")
 
-
             out.println("\t@Test fun `test unscaledValue`() {")
             (1..10).forEach { _ ->
                 val a = randomBigDecimal()
                 out.println("\t\tassertEquals(${wrapBI(a.unscaledValue())}, ${wrapBD(a)}.unscaledValue())")
+            }
+            out.println("\t}\n")
+
+            out.println("\t@Test fun `test operator plus`() {")
+            (1..10).forEach { _ ->
+                val a = randomBigDecimal()
+                val b = randomBigDecimal()
+                out.println("\t\tassertEquals(${wrapBD(a + b)}, ${wrapBD(a)} + ${wrapBD(b)})")
+            }
+            out.println("\t}\n")
+
+            out.println("\t@Test fun `test operator minus`() {")
+            (1..10).forEach { _ ->
+                val a = randomBigDecimal()
+                val b = randomBigDecimal()
+                out.println("\t\tassertEquals(${wrapBD(a - b)}, ${wrapBD(a)} - ${wrapBD(b)})")
+            }
+            out.println("\t}\n")
+
+            out.println("\t@Test fun `test operator times`() {")
+            (1..10).forEach { _ ->
+                val a = randomBigDecimal()
+                val b = randomBigDecimal()
+                out.println("\t\tassertEquals(${wrapBD(a * b)}, ${wrapBD(a)} * ${wrapBD(b)})")
+            }
+            out.println("\t}\n")
+
+            out.println("\t@Test fun `test operator divide`() {")
+            (1..10).forEach { _ ->
+                val a = randomBigDecimal()
+                val b = randomBigDecimal()
+                out.println("\t\tassertEquals(${wrapBD(a / b)}, ${wrapBD(a)} / ${wrapBD(b)})")
             }
             out.println("\t}\n")
 

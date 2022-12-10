@@ -2,9 +2,28 @@ package com.papacekb.kbignum
 
 expect class KBigDecimal(value: String) {
 
+    companion object {
+        val ONE: KBigDecimal
+        val TEN: KBigDecimal
+        val ZERO: KBigDecimal
+        fun valueOf(value: Double): KBigDecimal
+        fun valueOf(value: Long): KBigDecimal
+        fun valueOf(unscaledValue: Long, scale: Int): KBigDecimal
+    }
+
+    constructor(value: String, mc: KMathContext)
+
     constructor(value: Double)
 
+    constructor(value: Double, mc: KMathContext)
+
     constructor(value: Long)
+
+    constructor(value: Long, mc: KMathContext)
+
+    constructor(value: KBigInteger)
+
+    constructor(value: KBigInteger, mc: KMathContext)
 
     fun abs(): KBigDecimal
 
@@ -105,6 +124,14 @@ expect class KBigDecimal(value: String) {
     fun ulp(): KBigDecimal
 
     fun unscaledValue(): KBigInteger
+
+    operator fun plus(n: KBigDecimal): KBigDecimal
+
+    operator fun minus(n: KBigDecimal): KBigDecimal
+
+    operator fun times(n: KBigDecimal): KBigDecimal
+
+    operator fun div(n: KBigDecimal): KBigDecimal
 
     operator fun compareTo(n: KBigDecimal): Int
 

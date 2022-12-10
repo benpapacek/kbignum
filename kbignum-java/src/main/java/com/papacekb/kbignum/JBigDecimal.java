@@ -1,6 +1,8 @@
 package com.papacekb.kbignum;
 
 import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.math.MathContext;
 import java.math.RoundingMode;
 
 public class JBigDecimal {
@@ -11,16 +13,36 @@ public class JBigDecimal {
         this.delegate = delegate;
     }
 
+    public JBigDecimal(BigInteger value) {
+        this.delegate = new BigDecimal(value);
+    }
+
+    public JBigDecimal(BigInteger value, JMathContext mc) {
+        this.delegate = new BigDecimal(value, mc.delegate);
+    }
+
     public JBigDecimal(String value) {
         delegate = new BigDecimal(value);
+    }
+
+    public JBigDecimal(String value, JMathContext mc) {
+        delegate = new BigDecimal(value, mc.delegate);
     }
 
     public JBigDecimal(double value) {
         delegate = BigDecimal.valueOf(value);
     }
 
+    public JBigDecimal(double value, JMathContext mc) {
+        delegate = new BigDecimal(value, mc.delegate);
+    }
+
     public JBigDecimal(long value) {
         delegate = BigDecimal.valueOf(value);
+    }
+
+    public JBigDecimal(long value, JMathContext mc) {
+        delegate = new BigDecimal(value, mc.delegate);
     }
 
     public JBigDecimal(long value, int scale) {

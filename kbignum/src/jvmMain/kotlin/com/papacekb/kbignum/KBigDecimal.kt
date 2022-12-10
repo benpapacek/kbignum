@@ -5,11 +5,30 @@ import java.math.RoundingMode
 
 actual class KBigDecimal private constructor(private val delegate: java.math.BigDecimal) {
 
+    actual companion object {
+        actual val ONE: KBigDecimal = KBigDecimal(1)
+        actual val TEN: KBigDecimal = KBigDecimal(10)
+        actual val ZERO: KBigDecimal = KBigDecimal(0)
+        actual fun valueOf(value: Double): KBigDecimal = KBigDecimal(java.math.BigDecimal.valueOf(value))
+        actual fun valueOf(value: Long): KBigDecimal = KBigDecimal(java.math.BigDecimal.valueOf(value))
+        actual fun valueOf(unscaledValue: Long, scale: Int): KBigDecimal = KBigDecimal(java.math.BigDecimal.valueOf(unscaledValue, scale))
+    }
+
     actual constructor(value: String): this(java.math.BigDecimal(value))
 
     actual constructor(value: Double): this(java.math.BigDecimal.valueOf(value))
 
     actual constructor(value: Long): this(java.math.BigDecimal.valueOf(value))
+
+    actual constructor(value: String, mc: KMathContext) : this(java.math.BigDecimal(value, mc.toMathContext()))
+
+    actual constructor(value: Double, mc: KMathContext) : this(java.math.BigDecimal(value, mc.toMathContext()))
+
+    actual constructor(value: Long, mc: KMathContext) : this(java.math.BigDecimal(value, mc.toMathContext()))
+
+    actual constructor(value: KBigInteger) : this(java.math.BigDecimal(value.toString()))
+
+    actual constructor(value: KBigInteger, mc: KMathContext) : this(java.math.BigDecimal(value.toString(), mc.toMathContext()))
 
     actual fun abs(): KBigDecimal = KBigDecimal(this.delegate.abs())
 
@@ -20,8 +39,6 @@ actual class KBigDecimal private constructor(private val delegate: java.math.Big
     actual fun add(n: KBigDecimal, mc: KMathContext): KBigDecimal = KBigDecimal(this.delegate.add(n.delegate, mc.toMathContext()))
 
     actual fun byteValueExact(): Byte = delegate.byteValueExact()
-
-    actual operator fun compareTo(n: KBigDecimal): Int = delegate.compareTo(n.delegate)
 
     actual fun divide(n: KBigDecimal): KBigDecimal = KBigDecimal(delegate.divide(n.delegate))
 
@@ -113,6 +130,16 @@ actual class KBigDecimal private constructor(private val delegate: java.math.Big
     actual fun ulp(): KBigDecimal = KBigDecimal(delegate.ulp())
 
     actual fun unscaledValue(): KBigInteger = KBigInteger(delegate.unscaledValue())
+
+    actual operator fun plus(n: KBigDecimal): KBigDecimal = add(n)
+
+    actual operator fun minus(n: KBigDecimal): KBigDecimal = subtract(n)
+
+    actual operator fun times(n: KBigDecimal): KBigDecimal = multiply(n)
+
+    actual operator fun div(n: KBigDecimal): KBigDecimal = divide(n, KRoundingMode.HALF_EVEN)
+
+    actual operator fun compareTo(n: KBigDecimal): Int = delegate.compareTo(n.delegate)
 
     actual override fun equals(other: Any?): Boolean {
         return other is KBigDecimal && this.delegate == other.delegate

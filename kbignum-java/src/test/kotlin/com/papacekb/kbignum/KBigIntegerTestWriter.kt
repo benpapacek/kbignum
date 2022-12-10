@@ -15,7 +15,7 @@ class KBigIntegerTestWriter {
 
     private fun wrapBI(n: BigInteger) = "KBigInteger(\"$n\")"
 
-//    @Ignore("This is not a test per se, but a way of generating kmm tests which compare results with those of corresponding java classes")
+    @Ignore("This is not a test per se, but a way of generating kmm tests which compare results with those of corresponding java classes")
     @Test
     fun createKBigIntegerTest() {
         val file = File("../kbignum/src/commonTest/kotlin/com/papacekb/kbignum/KBigIntegerTest.kt")

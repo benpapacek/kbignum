@@ -4,11 +4,30 @@ import javaObjc.ComPapacekbKbignumJMathContext
 
 actual class KBigDecimal private constructor(private val delegate: ComPapacekbKbignumJBigDecimal) {
 
+    actual companion object {
+        actual val ONE: KBigDecimal = KBigDecimal(1)
+        actual val TEN: KBigDecimal = KBigDecimal(10)
+        actual val ZERO: KBigDecimal = KBigDecimal(0)
+        actual fun valueOf(value: Double): KBigDecimal = KBigDecimal(ComPapacekbKbignumJBigDecimal(value))
+        actual fun valueOf(value: Long): KBigDecimal = KBigDecimal(ComPapacekbKbignumJBigDecimal(value))
+        actual fun valueOf(unscaledValue: Long, scale: Int): KBigDecimal = KBigDecimal(ComPapacekbKbignumJBigDecimal(unscaledValue, scale))
+    }
+
     actual constructor(value: String): this(ComPapacekbKbignumJBigDecimal(value))
+
+    actual constructor(value: String, mc: KMathContext): this(ComPapacekbKbignumJBigDecimal(value, mc.toMathContext()))
 
     actual constructor(value: Double): this(ComPapacekbKbignumJBigDecimal(value))
 
+    actual constructor(value: Double, mc: KMathContext) : this(ComPapacekbKbignumJBigDecimal(value, mc.toMathContext()))
+
     actual constructor(value: Long): this(ComPapacekbKbignumJBigDecimal(value))
+
+    actual constructor(value: Long, mc: KMathContext) : this(ComPapacekbKbignumJBigDecimal(value, mc.toMathContext()))
+
+    actual constructor(value: KBigInteger) : this(ComPapacekbKbignumJBigDecimal(value.toString()))
+
+    actual constructor(value: KBigInteger, mc: KMathContext) : this(ComPapacekbKbignumJBigDecimal(value.toString(), mc.toMathContext()))
 
     actual fun abs(): KBigDecimal = KBigDecimal(this.delegate.abs()!!)
 
@@ -16,15 +35,13 @@ actual class KBigDecimal private constructor(private val delegate: ComPapacekbKb
         return KBigDecimal(delegate.absWithComPapacekbKbignumJMathContext(mc.toMathContext())!!)
     }
 
-    actual fun add(n: KBigDecimal) = KBigDecimal(this.delegate.addWithComPapacekbKbignumJBigDecimal(n.delegate)!!)
+    actual fun add(n: KBigDecimal): KBigDecimal = KBigDecimal(this.delegate.addWithComPapacekbKbignumJBigDecimal(n.delegate)!!)
 
     actual fun add(n: KBigDecimal, mc: KMathContext): KBigDecimal = KBigDecimal(this.delegate.addWithComPapacekbKbignumJBigDecimal(n.delegate, mc.toMathContext())!!)
 
     actual fun byteValueExact(): Byte = delegate.byteValueExact()
 
-    actual operator fun compareTo(n: KBigDecimal): Int = delegate.compareToWithComPapacekbKbignumJBigDecimal(n.delegate)
-
-    actual fun divide(n: KBigDecimal) = KBigDecimal(this.delegate.divideWithComPapacekbKbignumJBigDecimal(n.delegate)!!)
+    actual fun divide(n: KBigDecimal): KBigDecimal = KBigDecimal(this.delegate.divideWithComPapacekbKbignumJBigDecimal(n.delegate)!!)
 
     actual fun divide(n: KBigDecimal, scale: Int, roundingMode: KRoundingMode): KBigDecimal =
         KBigDecimal(delegate.divideWithComPapacekbKbignumJBigDecimal(n.delegate, scale, roundingMode.name)!!)
@@ -78,7 +95,7 @@ actual class KBigDecimal private constructor(private val delegate: ComPapacekbKb
 
     actual fun movePointRight(n: Int): KBigDecimal = KBigDecimal(delegate.movePointRightWithInt(n)!!)
 
-    actual fun multiply(n: KBigDecimal) = KBigDecimal(this.delegate.multiplyWithComPapacekbKbignumJBigDecimal(n.delegate)!!)
+    actual fun multiply(n: KBigDecimal): KBigDecimal = KBigDecimal(this.delegate.multiplyWithComPapacekbKbignumJBigDecimal(n.delegate)!!)
 
     actual fun multiply(n: KBigDecimal, mc: KMathContext): KBigDecimal = KBigDecimal(
         delegate.multiplyWithComPapacekbKbignumJBigDecimal(n.delegate, mc.toMathContext())!!
@@ -120,7 +137,7 @@ actual class KBigDecimal private constructor(private val delegate: ComPapacekbKb
 
     actual fun stripTrailingZeros(): KBigDecimal = KBigDecimal(delegate.stripTrailingZeroes()!!)
 
-    actual fun subtract(n: KBigDecimal) = KBigDecimal(this.delegate.subtractWithComPapacekbKbignumJBigDecimal(n.delegate)!!)
+    actual fun subtract(n: KBigDecimal): KBigDecimal = KBigDecimal(this.delegate.subtractWithComPapacekbKbignumJBigDecimal(n.delegate)!!)
 
     actual fun subtract(n: KBigDecimal, mc: KMathContext): KBigDecimal = KBigDecimal(
         delegate.subtractWithComPapacekbKbignumJBigDecimal(n.delegate, mc.toMathContext())!!
@@ -137,6 +154,16 @@ actual class KBigDecimal private constructor(private val delegate: ComPapacekbKb
     actual fun ulp(): KBigDecimal = KBigDecimal(delegate.ulp()!!)
 
     actual fun unscaledValue(): KBigInteger = KBigInteger(delegate.unscaledValue()!!)
+
+    actual operator fun plus(n: KBigDecimal): KBigDecimal = add(n)
+
+    actual operator fun minus(n: KBigDecimal): KBigDecimal = subtract(n)
+
+    actual operator fun times(n: KBigDecimal): KBigDecimal = multiply(n)
+
+    actual operator fun div(n: KBigDecimal): KBigDecimal = divide(n, KRoundingMode.HALF_EVEN)
+
+    actual operator fun compareTo(n: KBigDecimal): Int = delegate.compareToWithComPapacekbKbignumJBigDecimal(n.delegate)
 
     actual override fun equals(other: Any?): Boolean {
         return other is KBigDecimal && other.delegate == this.delegate
