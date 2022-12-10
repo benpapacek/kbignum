@@ -16,20 +16,7 @@ public class JMathContext {
     }
 
     public JMathContext(int precision, String roundingMode) {
-        this(new MathContext(precision, roundingMode(roundingMode)));
+        this(new MathContext(precision, RoundingMode.valueOf(roundingMode)));
     }
 
-    private static RoundingMode roundingMode(String s) {
-        switch(s) {
-            case "CEILING": return RoundingMode.CEILING;
-            case "DOWN": return RoundingMode.DOWN;
-            case "FLOOR": return RoundingMode.FLOOR;
-            case "HALF_DOWN": return RoundingMode.HALF_DOWN;
-            case "HALF_EVEN": return RoundingMode.HALF_EVEN;
-            case "HALF_UP": return RoundingMode.HALF_UP;
-            case "UNNECESSARY": return RoundingMode.UNNECESSARY;
-            case "UP": return RoundingMode.UP;
-            default: throw new IllegalStateException("Invalid rounding mode: " + s);
-        }
-    }
 }
