@@ -8,9 +8,8 @@ group = "com.papacekb.kbignum"
 version = "0.1.0"
 
 kotlin {
-    android()
     jvm()
-
+    android()
     listOf(
         iosX64(),
         iosArm64(),
@@ -86,7 +85,9 @@ kotlin {
         val jvmMain by getting {
             dependsOn(commonMain)
         }
-        val androidMain by getting
+        val androidMain by getting {
+            dependsOn(jvmMain)
+        }
         val androidTest by getting
         val iosX64Main by getting
         val iosArm64Main by getting
